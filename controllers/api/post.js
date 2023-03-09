@@ -12,7 +12,7 @@ function createPost(req, res, next){
      .catch(next)
 }
 
-function indexPost (req, res, next){
+function indexPost(req, res, next){
     Post.find({})
         .populate('owner')
         .then((posts) => {
