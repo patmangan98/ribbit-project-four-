@@ -13,7 +13,7 @@ export default function NavBar({ user, setUser }) {
 		<nav>
 			<Link to='/create'>Create Thread</Link>
 			&nbsp; | &nbsp;
-            <Link to='/global'>GlobalPage</Link>
+            <Link to='/global'>Global Page</Link>
 			&nbsp;
 			<span>Welcome, { user.name }</span>
 			&nbsp;&nbsp;
