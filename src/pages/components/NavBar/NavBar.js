@@ -11,7 +11,7 @@ export default function NavBar({ user, setUser }) {
 
 	return (
 		<nav>
-			<Link to='/orders'>Order History</Link>
+			<Link to='/create'>Create Thread</Link>
 			&nbsp; | &nbsp;
             <Link to='/global'>GlobalPage</Link>
 			&nbsp;
