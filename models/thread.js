@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const postSchema = require('./post')
 
 const threadSchema = new Schema({
     topic:{
@@ -11,7 +12,10 @@ const threadSchema = new Schema({
         ref: "User",
         required: true
     },
-    posts:[postSchema]
+    posts: {
+        type: [postSchema.schema],
+        required: false,
+    }
     
 })
 
