@@ -7,12 +7,18 @@
 
 // router.post('/new', threadCtrl.createThread)
 
-// router.get('/:id', threadCtrl.indexThread)
 
-// router.patch("/:id", threadCtrl.updateThread)
+router.patch("/:id", threadCtrl.updateThread)
+
 
 // router.delete('/:id', threadCtrl.deleteThread)
 
-// router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
+
+router.get('/', threadCtrl.indexThread)
+
+router.get('/:id', threadCtrl.showThread)
+
+router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
+
 
 // module.exports = router

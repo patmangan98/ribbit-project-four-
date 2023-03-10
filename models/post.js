@@ -16,11 +16,6 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    // thread:{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Thread',
-    //     required: true
-    // },
     owner:{
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -29,4 +24,4 @@ const postSchema = new Schema({
     comments:[commentSchema]
 })
 
-module.exports = mongoose.model('Post', postSchema)
+module.exports = postSchema
