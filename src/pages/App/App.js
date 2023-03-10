@@ -21,12 +21,15 @@ export default function App() {
 					<Routes>
 						<Route path='/global' element={<GlobalPage user={user}/>} />
 						<Route path='/create' element={<CreateThread />} />
-						<Route path='/auth' element={<AuthPage />} />
 					</Routes>
 				</>
 			) : (
-				// <AuthPage setUser={setUser} />
+				<>
+				<Routes>
+					<Route path='/auth' element={<AuthPage setUser={setUser}/>} />
+				</Routes>
 				<GlobalPage />
+				</>
 			)}
 		</main>
 	)
