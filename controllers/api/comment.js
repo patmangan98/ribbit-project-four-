@@ -12,23 +12,23 @@ function createComment(req, res, next){
      .catch(next)
 }
 
-function indexComment (req, res, next){
-    Post.find({})
-        .populate('owner')
-        .then((comments) => {
-            return comments.map((comments) => comments)
-        })
-        .then((comments) => {
-            return res.status(200).json({ comments: comments })
-        })
-        .catch(next)
-}
+// function indexComment (req, res, next){
+//     Post.find({})
+//         .populate('owner')
+//         .then((comments) => {
+//             return comments.map((comments) => comments)
+//         })
+//         .then((comments) => {
+//             return res.status(200).json({ comments: comments })
+//         })
+//         .catch(next)
+// }
 
-function showComment(req, res, next){
-    Post.findById(req.params.id)
-    .then((comment) => res.status(200).json({comment: comment}))
-    .catch(next)
-}
+// function showComment(req, res, next){
+//     Post.findById(req.params.id)
+//     .then((comment) => res.status(200).json({comment: comment}))
+//     .catch(next)
+// }
 
 // function updateComment(req, res, next) {
 //     Post.findById(req.params.id)
