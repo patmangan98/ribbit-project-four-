@@ -12,7 +12,10 @@ const threadSchema = new Schema({
         ref: 'User',
         required: true
     },
-    posts:[postSchema]
+    posts: {
+        type: [postSchema.schema],
+        required: false,
+    }
     
 })
 
