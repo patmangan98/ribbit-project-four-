@@ -23,7 +23,37 @@ function indexComment (req, res, next){
         .catch(next)
 }
 
+function showComment(req, res, next){
+    Post.findById(req.params.id)
+    .then((comment) => res.status(200).json({comment: comment}))
+    .catch(next)
+}
+
+function updateComment(req, res, next) {
+    Post.findById(req.params.id)
+    .then((comment) => {
+        const comment = comment.id(req.body.id)
+        comment.topic = req.body.text
+        return comment.save()
+    })
+    .then((comment) => res.status(204).json(comment))
+    .catch(next)
+}
+
+function deleteComment(req, res, next){
+    Post.findById(req.params.id)
+    .then((comment) => {
+        comment.id(req.body.id).remove()
+        return comment.save()
+    })
+    .then((comment) => res.Status(204))
+    .catch(next)
+}
+
 module.exports = {
     createComment,
-    indexComment
+    indexComment,
+    showComment,
+    updateComment,
+    deleteComment
 }

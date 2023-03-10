@@ -24,7 +24,37 @@ function indexPost(req, res, next){
         .catch(next)
 }
 
+function showPost(req, res, next){
+    Post.findById(req.params.id)
+    .then((post) => res.status(200).json({post: post}))
+    .catch(next)
+}
+
+function updatePost(req, res, next) {
+    Post.findById(req.params.id)
+    .then((post) => {
+        const post = post.id(req.body.id)
+        post.topic = req.body.text
+        return post.save()
+    })
+    .then((post) => res.status(204).json(post))
+    .catch(next)
+}
+
+function deletePost(req, res, next){
+    Post.findById(req.params.id)
+    .then((post) => {
+        post.id(req.body.id).remove()
+        return post.save()
+    })
+    .then((post) => res.Status(204))
+    .catch(next)
+}
+
 module.exports = {
     createPost,
-    indexPost
+    indexPost,
+    showPost,
+    updatePost,
+    deletePost
 }
