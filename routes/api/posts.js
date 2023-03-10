@@ -7,12 +7,13 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 router.post('/new', postsCtrl.createPost)
 
-router.get('/:id', postsCtrl.indexPost)
-
-// router.patch("/:id", postsCtrl.updatePost)
+router.patch("/:id", postsCtrl.updatePost)
 
 router.delete('/:id', postsCtrl.deletePost)
 
+router.get('/', postsCtrl.indexPost)
+
+router.get('/:id', postsCtrl.showPost)
 
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 
