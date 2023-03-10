@@ -1,14 +1,18 @@
-import {Link} from "react-router-dom"
+// import { useNavigate, Link } from "react-router-dom"
+// import AuthPage from "../AuthPage/AuthPage"
 
 
-export default function NonUserGlobalPage() {
-    return (
-    <>
-        <Link to="/auth">
-        <button>Sign-Up or Sign-in</button>
-        </Link>
+// export default function NonUserGlobalPage() {
+   
 
-        <h1>You Should Probably Sign-Up</h1>
-    </>
-    )
-}
+   
+//     return (
+//     <>
+       
+//        <Link to ='sign'><p></p></Link>
+        
+
+//         <h1>You Should Probably Sign-Up</h1>
+//     </>
+//     )
+// }
