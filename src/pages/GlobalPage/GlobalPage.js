@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function GlobalPage({user}) {
 
@@ -9,9 +9,9 @@ export default function GlobalPage({user}) {
 		return (
 		<>	
 
-		<NavLink to = '/auth'>
+		<Link to = '/auth'>
 			<button>Sign In</button>
-		</NavLink>
+		</Link>
 
 
 		<h2>log in</h2>
