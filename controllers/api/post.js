@@ -1,20 +1,27 @@
-const Post = require('../../models/post')
+const Thread = require('../../models/thread')
 const User = require('../../models/user')
 const Comment = require('../../models/comment')
 
 function createPost(req, res, next) {
-    console.log(req.body)
     const post = req.body
     post.owner = req.user._id
-    Post.create(post)
-        .then((post) => {
-            res.status(201).json({ post: post })
+    const threadId = req.body.threadId
+    Thread.findById(threadId)
+        .then((thread) => {
+            thread.posts.push(post)
+            return thread.save()
+            
+        })
+        .then((thread) => {
+            res.status(201).json({ thread: thread })
         })
         .catch(next)
 }
 
 function indexPost(req, res, next) {
-    Post.find({})
+    const threadId = req.body.threadId
+
+    Thread.findById(threadId)
         .populate('owner')
         .then((posts) => {
             return posts.map((posts) => posts)
@@ -26,7 +33,7 @@ function indexPost(req, res, next) {
 }
 
 function showPost(req, res, next) {
-    Post.findById(req.params.id)
+    Thread.findById(req.params.id)
         .then((post) => {
             if (post.owner.equals(req.user._id)) {
                 return post.save()
@@ -41,7 +48,7 @@ function showPost(req, res, next) {
 }
 
 function updatePost(req, res, next) {
-    Post.findById(req.params.id)
+    Thread.findById(req.params.id)
         .then((post) => {
             if (post.owner.equals(req.user._id)) {
                 return post.updateOne(req.body);
@@ -54,9 +61,8 @@ function updatePost(req, res, next) {
 }
 
 function deletePost(req, res, next) {
-    Post.findById(req.params.id)
+    Thread.findById(req.params.id)
         .then((post) => {
-            console.log(post)
             if (post.owner.equals(req.user._id)) {
                 return post.deleteOne();
             } else {

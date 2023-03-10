@@ -12,11 +12,8 @@ const threadSchema = new Schema({
         ref: 'User',
         required: true
     },
-    posts: {
-        type: [postSchema.schema],
-        required: false,
-    }
+    posts:[postSchema]
     
 })
 
-module.exports = threadSchema
+module.exports = mongoose.model('Thread', threadSchema)

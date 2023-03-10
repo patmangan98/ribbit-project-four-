@@ -1,18 +1,17 @@
 const Thread = require('../../models/thread')
-const Post = require('../../models/post')
 
 function createThread(req, res, next){
     const thread = req.body
     thread.owner = req.user._id
     Thread.create(thread)
     .then((thread) => {
-        res.status(201).json({thread: thread})
+        res.status(201).json({ thread: thread })
     })
      .catch(next)
 }
 
 function indexThread (req, res, next){
-    Post.find({})
+    Thread.find({})
         .populate('owner')
         .then((threads) => {
             return threads.map((threads) => threads)
@@ -24,31 +23,41 @@ function indexThread (req, res, next){
 }
 
 function showThread(req, res, next){
-    Post.findById(req.params.id)
-    .then((thread) => res.status(200).json({thread: thread}))
+    Thread.findById(req.params.id)
+    .then((thread) =>{
+        if (thread.owner.equals(req.user._id)) {
+            return thread.save()
+        } else {
+            res.sendStatus(401);
+        }
+    })
+    
     .catch(next)
 }
 
 function updateThread(req, res, next) {
-
-    Post.findById(req.params.id)
+    Thread.findById(req.params.id)
     .then((thread) => {
-        const threadId = req.params.threadId
-        thread.id(req.body.id)
-        thread.topic = req.body.text
-        return thread.save()
+        if (thread.owner.equals(req.user._id)) {
+            return thread.updateOne(req.body);
+        } else {
+            res.sendStatus(401);
+        }
     })
     .then((thread) => res.status(204).json(thread))
     .catch(next)
 }
 
 function deleteThread(req, res, next){
-    Post.findById(req.params.id)
+    Thread.findById(req.params.id)
     .then((thread) => {
-        thread.id(req.body.id).remove()
-        return thread.save()
+        if (thread.owner.equals(req.user._id)) {
+            return thread.deleteOne();
+        } else {
+            res.sendStatus(401);
+        }
     })
-    .then((thread) => res.Status(204))
+    .then(() => res.Status(204))
     .catch(next)
 }
 
