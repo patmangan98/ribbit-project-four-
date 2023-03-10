@@ -20,6 +20,7 @@ export default function App() {
 					<Routes>
 						<Route path='/global' element={<GlobalPage />} />
 						<Route path='/create' element={<CreateThread />} />
+						<Route path='/auth' element={<CreateThread/>}/>
 					</Routes>
 				</>
 			) : (
