@@ -21,13 +21,13 @@ app.use(require('./config/checkToken'))
 
 const port = process.env.PORT || 3001;
 
-// Put API routes here, before the "catch all" route
+// Put API routes here, before the 'catch all' route
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/posts', require('./routes/api/posts'))
 app.use('/api/thread', require('./routes/api/thread'))
 app.use('/api/comment', require('./routes/api/comment'))
 
-// The following "catch all" route (note the *) is necessary
+// The following 'catch all' route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

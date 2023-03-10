@@ -1,10 +1,11 @@
 const Comment = require('../../models/comment')
-const Post = require('../../models/post')
+// const Post = require('../../models/post')
+import { Post } from './../../models/post'
 
 function createComment(req, res, next){
     const comment = req.body
-    post.owner = req.user._id
-    Post.create(post)
+    comment.owner = req.user._id
+    Post.create(comment)
     .then((comment) => {
         res.status(201).json({comment: comment})
     })

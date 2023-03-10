@@ -3,8 +3,8 @@ const Post = require('../../models/post')
 
 function createThread(req, res, next){
     const thread = req.body
-    post.owner = req.user._id
-    Post.create(post)
+    thread.owner = req.user._id
+    Post.create(thread)
     .then((thread) => {
         res.status(201).json({thread: thread})
     })

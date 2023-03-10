@@ -3,6 +3,7 @@ const User = require('../../models/user')
 const Comment = require('../../models/comment')
 
 function createPost(req, res, next){
+    console.log(req.body)
     const post = req.body
     post.owner = req.user._id
     Post.create(post)
