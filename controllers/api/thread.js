@@ -30,9 +30,11 @@ function showThread(req, res, next){
 }
 
 function updateThread(req, res, next) {
+
     Post.findById(req.params.id)
     .then((thread) => {
-        const thread = thread.id(req.body.id)
+        const threadId = req.params.threadId
+        thread.id(req.body.id)
         thread.topic = req.body.text
         return thread.save()
     })

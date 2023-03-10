@@ -1,6 +1,6 @@
 const Comment = require('../../models/comment')
-// const Post = require('../../models/post')
-import { Post } from './../../models/post'
+const Post = require('../../models/post')
+
 
 function createComment(req, res, next){
     const comment = req.body
@@ -30,16 +30,16 @@ function showComment(req, res, next){
     .catch(next)
 }
 
-function updateComment(req, res, next) {
-    Post.findById(req.params.id)
-    .then((comment) => {
-        const comment = comment.id(req.body.id)
-        comment.topic = req.body.text
-        return comment.save()
-    })
-    .then((comment) => res.status(204).json(comment))
-    .catch(next)
-}
+// function updateComment(req, res, next) {
+//     Post.findById(req.params.id)
+//     .then((comment) => {
+//         const comment = comment.id(req.body.id)
+//         comment.topic = req.body.text
+//         return comment.save()
+//     })
+//     .then((comment) => res.status(204).json(comment))
+//     .catch(next)
+// }
 
 function deleteComment(req, res, next){
     Post.findById(req.params.id)
@@ -55,6 +55,6 @@ module.exports = {
     createComment,
     indexComment,
     showComment,
-    updateComment,
+    // updateComment,
     deleteComment
 }

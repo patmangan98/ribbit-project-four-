@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const commentSchema = require('./comment')
-
+const threadSchema = require('./thread')
 
 const postSchema = new Schema({
     title:{
@@ -16,11 +16,7 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    // thread:{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Thread',
-    //     required: true
-    // },
+    thread:[threadSchema],
     owner:{
         type: Schema.Types.ObjectId,
         ref: 'User',
