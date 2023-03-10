@@ -1,3 +1,4 @@
+
 const Thread = require('../../models/thread')
 
 function createThread(req, res, next){
@@ -61,10 +62,11 @@ function deleteThread(req, res, next){
     .catch(next)
 }
 
-module.exports = {
-    createThread,
-    indexThread,
-    showThread,
-    updateThread,
-    deleteThread
-}
+
+// module.exports = {
+//     createThread,
+//     indexThread,
+//     showThread,
+//     updateThread,
+//     deleteThread
+// }

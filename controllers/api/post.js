@@ -3,6 +3,7 @@ const User = require('../../models/user')
 const Comment = require('../../models/comment')
 
 function createPost(req, res, next) {
+
     const post = req.body
     post.owner = req.user._id
     const threadId = req.body.threadId
@@ -11,13 +12,13 @@ function createPost(req, res, next) {
             console.log(thread)
             thread.posts.push(post)
             return thread.save()
-            
         })
         .then((thread) => {
             res.status(201).json({ thread: thread })
         })
         .catch(next)
 }
+
 
 // function indexPost(req, res, next) {
 //     const postId = req.params
