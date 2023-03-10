@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
+import NonUserGlobalPage from '../NonUserGlobalPage/NonUserGlobalPage';
 import GlobalPage from '../GlobalPage/GlobalPage';
 import CreateThread from '../CreateThread/CreateThread';
 import NavBar from '../components/NavBar/NavBar';
@@ -18,12 +19,17 @@ export default function App() {
 				<>
 					<NavBar user={user} setUser={setUser}/>
 					<Routes>
-						<Route path='/global' element={<GlobalPage />} />
+						<Route path='/global' element={<GlobalPage user={user}/>} />
 						<Route path='/create' element={<CreateThread />} />
 					</Routes>
 				</>
 			) : (
-				<AuthPage setUser={setUser} />
+				<>
+				<Routes>
+					<Route path='/auth' element={<AuthPage setUser={setUser}/>} />
+				</Routes>
+				<GlobalPage />
+				</>
 			)}
 		</main>
 	)
