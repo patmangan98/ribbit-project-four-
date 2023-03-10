@@ -5,16 +5,6 @@ const Post = require('../../models/post')
 
 
 
-// function createComment(req, res, next){
-//     const comment = req.body
-//     comment.owner = req.user._id
-//     Post.create(comment)
-//     .then((comment) => {
-//         res.status(201).json({comment: comment})
-//     })
-//      .catch(next)
-// }
-
 // function indexComment (req, res, next){
 //     Post.find({})
 //         .populate('owner')
@@ -27,15 +17,9 @@ const Post = require('../../models/post')
 //         .catch(next)
 // }
 
-
-// function updateComment(req, res, next) {
+// function showComment(req, res, next){
 //     Post.findById(req.params.id)
-//     .then((comment) => {
-//         const comment = comment.id(req.body.id)
-//         comment.topic = req.body.text
-//         return comment.save()
-//     })
-//     .then((comment) => res.status(204).json(comment))
+//     .then((comment) => res.status(200).json({comment: comment}))
 
 //     .catch(next)
 // }
