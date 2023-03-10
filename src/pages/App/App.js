@@ -6,6 +6,7 @@ import CreateThread from '../CreateThread/CreateThread';
 import NavBar from '../components/NavBar/NavBar';
 import './App.css';
 
+
 import { getUser } from '../../utilities/users-service'
 
 export default function App() {

@@ -16,11 +16,11 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    thread:{
-        type: Schema.Types.ObjectId,
-        ref: 'Thread',
-        required: true
-    },
+    // thread:{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Thread',
+    //     required: true
+    // },
     owner:{
         type: Schema.Types.ObjectId,
         ref: 'User',
