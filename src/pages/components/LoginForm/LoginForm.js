@@ -27,35 +27,43 @@ export default function LoginForm({ setUser }) {
     }
 
     return (
-        <div className='login-form form-container'>
-        <form autoComplete='off' onSubmit={handleSubmit}>
-            <div className='form-floating'>
-            <input
-                className='form-control'
-                type='email'
-                name='email'
-                placeholder='Email'
-                value={credentials.email}
-                onChange={handleChange}
-                required
-                />
-            <label className='form-label'>Email</label>
-            </div>
-            <div className='form-floating'>
-            <input 
-                className='form-control'
-                type='password'
-                name='password'
-                placeholder='Password'
-                value={credentials.password}
-                onChange={handleChange}
-                required
-            />
-            <label className='form-label'>Password</label>
-            </div>
-            <button type='submit'>Log In</button>
-        </form>
-        <p className='error-message' >{error}</p>
-    </div>        
+        <div className='d-flex justify-content-center col'>
+            {/* <div className='container-sm row'> */}
+                <div className='login-form form-container'>
+                    <form autoComplete='off' onSubmit={handleSubmit}>
+                        <div className='row'>
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type='email'
+                                    name='email'
+                                    placeholder='Email'
+                                    value={credentials.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label className='form-label'>Email</label>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='form-floating'>
+                                <input
+                                    className='form-control'
+                                    type='password'
+                                    name='password'
+                                    placeholder='Password'
+                                    value={credentials.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <label className='form-label'>Password</label>
+                            </div>
+                        </div>
+                        <button type='submit'>Log In</button>
+                    </form>
+                    <p className='error-message' >{error}</p>
+                </div>
+            {/* </div> */}
+        </div>
     )
 }
