@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route} from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
 import DetailThread from '../DetailThread/DetailThread'
 import GlobalPage from '../GlobalPage/GlobalPage';
 import CreateThread from '../CreateThread/CreateThread';
+import { indexThread } from "../../utilities/thread-api"
 import NavBar from '../components/NavBar/NavBar';
 import './App.css';
 
 
 import { getUser } from '../../utilities/users-service'
+// import { use } from '../../../routes/api/users';
 
 export default function App() {
   const [user, setUser] = useState(getUser())
+
+  const [threadArr, setThreadArr] = useState([])
+
+  //use effect
+  useEffect(() => {
+	indexThread()
+		.then((res) => res.json())
+		.then((resData) => setThreadArr(resData.threads))
+  }, [])
+
+  const threadRoutes = threadArr.map((thread) => <Route key={thread.id} path= {`/thread/${thread._id}`} element={<DetailThread thread={thread}/>}/>)
 
  return (
 		<main className='App'>
@@ -21,7 +34,8 @@ export default function App() {
 					<Routes>
 						<Route path='/global' element={<GlobalPage user={user}/>} />
 						<Route path='/create' element={<CreateThread />} />
-						<Route path= '/thread/:threadId' element ={<DetailThread />} />
+						{/* <Route path= '/thread/:threadId' element ={<DetailThread />} /> */}
+						{threadRoutes}
 					</Routes>
 				</>
 			) : (

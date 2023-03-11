@@ -14,7 +14,7 @@ export default function GlobalPage({user}) {
 			.then((resData) => setThreadArr(resData.threads))
 	}, [])
 
-	console.log(threadArr)
+	// console.log(threadArr)
 	const threadMap = threadArr.map((thread, index) => (<ThreadCard thread={thread} key={index}/>))
 
 
