@@ -63,10 +63,10 @@ function deleteThread(req, res, next){
 }
 
 
-// module.exports = {
-//     createThread,
-//     indexThread,
-//     showThread,
-//     updateThread,
-//     deleteThread
-// }
+module.exports = {
+    createThread,
+    indexThread,
+    showThread,
+    updateThread,
+    deleteThread
+}
