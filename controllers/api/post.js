@@ -5,6 +5,7 @@ const Comment = require('../../models/comment')
 function createPost(req, res, next) {
 
     const post = req.body
+    console.log(post)
     post.owner = req.user._id
     const threadId = req.body.threadId
     Thread.findById(threadId)

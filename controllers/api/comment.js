@@ -1,9 +1,25 @@
-
 const Comment = require('../../models/comment')
 const Post = require('../../models/post')
+const Thread = require('../../models/thread')
 
 
-
+function createComment(req, res, next){
+    const comment = req.body
+    comment.owner = req.user._id
+    const postId = req.body.postId
+    const threadId = req.body.threadId
+    Thread.findById(postId, threadId)
+    .then((post) => {
+        console.log(post)
+        post.comments.push(comment)
+        return post.save()
+    })
+    .then((post) => {
+        res.status(201).json({post: post})
+        
+    })
+     .catch(next)
+}
 
 // function indexComment (req, res, next){
 //     Post.find({})
@@ -20,7 +36,6 @@ const Post = require('../../models/post')
 // function showComment(req, res, next){
 //     Post.findById(req.params.id)
 //     .then((comment) => res.status(200).json({comment: comment}))
-
 //     .catch(next)
 // }
 
@@ -35,11 +50,20 @@ const Post = require('../../models/post')
 //     .catch(next)
 // }
 
+function deleteComment(req, res, next){
+    Post.findById(req.params.id)
+    .then((comment) => {
+        comment.id(req.body.id).remove()
+        return comment.save()
+    })
+    .then((comment) => res.Status(204))
+    .catch(next)
+}
 
 module.exports = {
     createComment,
-    indexComment,
-    showComment,
+    // indexComment,
+    // showComment,
     // updateComment,
     deleteComment
 }
