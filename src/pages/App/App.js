@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route} from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
-import NonUserGlobalPage from '../NonUserGlobalPage/NonUserGlobalPage';
+
 import GlobalPage from '../GlobalPage/GlobalPage';
 import CreateThread from '../CreateThread/CreateThread';
 import NavBar from '../components/NavBar/NavBar';
