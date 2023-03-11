@@ -13,9 +13,9 @@ function createComment(req, res, next){
     Thread.findOne({_id: threadId})
     .then((thread) => {
         for(let i = 0; i < thread.posts.length; i++){
-            console.log(thread.posts[i])
-            const postIndex = thread.posts[i]
-            postObj[post._id] = postIndex
+            thread.posts[i].comments.push(comment)
+            const postIndex = thread.posts[i].comments
+            postObj[post._id] = postIndex   
         }
         return thread.save()
     })
@@ -27,8 +27,15 @@ function createComment(req, res, next){
 }
 
 
-
-
+function deleteComment(req, res, next){
+    Post.findById(req.params.id)
+    .then((comment) => {
+        comment.id(req.body.id).remove()
+        return comment.save()
+    })
+    .then(() => res.Status(204))
+    .catch(next)
+}
 
 
 
@@ -65,15 +72,6 @@ function createComment(req, res, next){
 //     .catch(next)
 // }
 
-function deleteComment(req, res, next){
-    Post.findById(req.params.id)
-    .then((comment) => {
-        comment.id(req.body.id).remove()
-        return comment.save()
-    })
-    .then((comment) => res.Status(204))
-    .catch(next)
-}
 
 module.exports = {
     createComment,
