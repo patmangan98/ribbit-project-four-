@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route} from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
-
+import DetailThread from '../DetailThread/DetailThread'
 import GlobalPage from '../GlobalPage/GlobalPage';
 import CreateThread from '../CreateThread/CreateThread';
 import NavBar from '../components/NavBar/NavBar';
@@ -21,6 +21,7 @@ export default function App() {
 					<Routes>
 						<Route path='/global' element={<GlobalPage user={user}/>} />
 						<Route path='/create' element={<CreateThread />} />
+						<Route path= '/thread/:threadId' element ={<DetailThread />} />
 					</Routes>
 				</>
 			) : (
