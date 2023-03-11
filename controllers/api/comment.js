@@ -1,4 +1,5 @@
 const Comment = require('../../models/comment')
+const post = require('../../models/post')
 const Post = require('../../models/post')
 const Thread = require('../../models/thread')
 
@@ -6,13 +7,17 @@ const Thread = require('../../models/thread')
 function createComment(req, res, next){
     const comment = req.body
     comment.owner = req.user._id
-    const postId = req.body.postId
     const threadId = req.body.threadId
-    Thread.findById(postId, threadId)
-    .then((post) => {
-        console.log(post)
-        post.comments.push(comment)
-        return post.save()
+    // const postId = req.body.postId
+    const postObj = {}
+    Thread.findOne({_id: threadId})
+    .then((thread) => {
+        for(let i = 0; i < thread.posts.length; i++){
+            console.log(thread.posts[i])
+            const postIndex = thread.posts[i]
+            postObj[post._id] = postIndex
+        }
+        return thread.save()
     })
     .then((post) => {
         res.status(201).json({post: post})
@@ -20,6 +25,16 @@ function createComment(req, res, next){
     })
      .catch(next)
 }
+
+
+
+
+
+
+
+
+
+
 
 // function indexComment (req, res, next){
 //     Post.find({})
