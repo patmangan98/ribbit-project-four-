@@ -4,37 +4,44 @@ const Post = require('../../models/post')
 const Thread = require('../../models/thread')
 
 
-function createComment(req, res, next){
+function createComment(req, res, next) {
     const comment = req.body
     comment.owner = req.user._id
     const threadId = req.body.threadId
-    // const postId = req.body.postId
+    const postId = req.body.postId
     const postObj = {}
-    Thread.findOne({_id: threadId})
-    .then((thread) => {
-        for(let i = 0; i < thread.posts.length; i++){
-            thread.posts[i].comments.push(comment)
-            const postIndex = thread.posts[i].comments
-            postObj[post._id] = postIndex   
-        }
-        return thread.save()
-    })
-    .then((post) => {
-        res.status(201).json({post: post})
-        
-    })
-     .catch(next)
+    const obj = {}
+    Thread.findOne({ _id: threadId })
+        .then((thread) => {
+            const postIndex = thread.posts.findIndex((posts) => posts)
+            const post = thread.posts[postIndex]
+            post.comments.push(comment)
+            const commentObj = {}
+
+            for (let j = 0; j < post.comments.length; j++) {
+                const commentIndex = post.comments[j]
+                commentObj[commentIndex._id] = commentIndex
+            }
+
+            return thread.save()
+        })
+        .then((post) => {
+            res.status(201).json({ post: post })
+
+        })
+        .catch(next)
 }
 
 
-function deleteComment(req, res, next){
-    Post.findById(req.params.id)
-    .then((comment) => {
-        comment.id(req.body.id).remove()
-        return comment.save()
-    })
-    .then(() => res.Status(204))
-    .catch(next)
+
+function deleteComment(req, res, next) {
+    Thread.findById(req.params.id)
+        .then((comment) => {
+            comment.id(req.body.id).remove()
+            return comment.save()
+        })
+        .then(() => res.Status(204))
+        .catch(next)
 }
 
 
