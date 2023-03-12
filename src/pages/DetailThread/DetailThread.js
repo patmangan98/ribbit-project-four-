@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Posts from "../components/Posts/Posts"
 import { showThread } from "../../utilities/thread-api"
-
+import UpdateThread from "../components/UpdateThread/UpdateThread"
 
 export default function DetailThread({thread}) {
     // console.log(thread.posts)
@@ -16,6 +16,7 @@ export default function DetailThread({thread}) {
    
     return (
     <>
+    <UpdateThread thread={thread}/>
     {/* <Posts/> */}
     {postMap}
     </>

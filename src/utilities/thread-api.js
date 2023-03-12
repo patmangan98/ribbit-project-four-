@@ -36,6 +36,18 @@ export function deleteThread(threadId) {
     })
 }
 
+export function updateThread(data, threadId) {
+    const token = getToken()
+    return fetch(`http://localhost:3001/api/thread/${threadId}`, {
+        method: "PATCH",
+        headers : {
+            Accept: "application/json",
+            "Content-Type" : "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+}
 
 
 
