@@ -1,3 +1,35 @@
-# MERN-Stack Infrastructure
-adding this for commit
-Clone this repo to provide the starter code for a comprehensive MERN-stack project including token-based authentication
+# Ribbit
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+- Mongoose
+- Express
+- React
+- Node.js
+- Bootstrap
+- MongoDB
+
+## Getting Started
+
+## Next Steps
+
+### Our Team
+
+**Erika Helm**
+
+erikadphelm@gmail.com
+
+**Honesty Moore**
+
+honestymoore77@gmail.com
+
+**Heather Knapp**
+
+heakna07@gmail.com
+
+**Patrick Mangan**
+
+pat.mangan@outlook.com
