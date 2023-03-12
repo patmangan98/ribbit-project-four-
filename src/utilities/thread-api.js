@@ -26,6 +26,18 @@ export function createThread(data) {
 }
 
 
+export function deleteThread(threadId) {
+    const token = getToken()
+    return fetch(`http://localhost:3001/api/thread/${threadId}`, {
+        method: "DELETE",
+        headers : {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}
+
+
+
 
 
 export function showThread(threadId) {
