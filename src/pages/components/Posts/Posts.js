@@ -1,7 +1,7 @@
 import Comment from "../Comment/Comment"
 
 export default function Posts({post, index}) {
-    console.log(post)
+    // console.log(post)
     return (
     <>
     <h3>{post.category}</h3>
