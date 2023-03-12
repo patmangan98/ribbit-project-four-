@@ -1,5 +1,4 @@
 import { Link, useParams } from "react-router-dom"
-import { detailThread } from ""
 
 export default function ThreadCard ({thread}) {
     let {threadId} = useParams()
@@ -11,9 +10,7 @@ export default function ThreadCard ({thread}) {
         <div>
         
         
-        
-        
-
+    
         <p>{thread.topic}</p>
 
         
