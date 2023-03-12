@@ -4,7 +4,7 @@ import Posts from "../components/Posts/Posts"
 import { showThread } from "../../utilities/thread-api"
 
 export default function DetailThread({thread}) {
-    console.log(thread.posts)
+    // console.log(thread.posts)
     let { threadId } = useParams()
 
     const [threadPosts, setThreadPosts] = useState(thread.posts)   
