@@ -16,7 +16,7 @@ export default function GlobalPage({user}) {
 	}, [])
 
 	// console.log(threadArr)
-	const threadMap = threadArr.map((thread, index) => (<ThreadCard thread={thread} key={index}/>))
+	const threadMap = threadArr.map((thread, index) => (<ThreadCard thread={thread} key={index} setThreadArr={setThreadArr}/>))
 
 
 	if (!user){
