@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Posts from "../components/Posts/Posts"
 import { showThread } from "../../utilities/thread-api"
 
+
 export default function DetailThread({thread}) {
     // console.log(thread.posts)
     let { threadId } = useParams()
