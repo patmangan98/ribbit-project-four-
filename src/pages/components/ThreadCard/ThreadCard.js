@@ -17,7 +17,7 @@ export default function ThreadCard ({thread}) {
         <p>{thread.topic}</p>
 
         
-        //
+        
         <Link to = {`/thread/${thread._id}`}>
         <button>Inspect Thread</button>
         </Link>
