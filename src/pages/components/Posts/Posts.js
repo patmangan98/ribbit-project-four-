@@ -1,9 +1,13 @@
 import Comment from "../Comment/Comment"
 
-export default function Posts() {
+export default function Posts({post, index}) {
+    console.log(post)
     return (
     <>
-    <h1>Posts</h1>
+    <h3>{post.category}</h3>
+    <p>{post.title}</p>
+    <p>{post.text}</p>
+    
     <Comment/>
     </>
     )
