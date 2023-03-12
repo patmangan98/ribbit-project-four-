@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { indexThread } from "../../utilities/thread-api"
 import ThreadCard from '../components/ThreadCard/ThreadCard'
+import CreateThread from '../components/CreateForms/CreateThread'
 
 export default function GlobalPage({user}) {
 	
@@ -34,6 +35,8 @@ export default function GlobalPage({user}) {
 	return (
 		<>
 		<h2>Discover New Ideas!</h2>
+		<CreateThread user={user} setThreadArr ={setThreadArr}/>
+
 		{threadMap}
 		</>
 	)

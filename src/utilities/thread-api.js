@@ -10,6 +10,24 @@ export function indexThread() {
     })
 }
 
+
+
+export function createThread(data) {
+    const token = getToken()
+    return fetch("http://localhost:3001/api/thread/new",{
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type" : "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+}
+
+
+
+
 export function showThread(threadId) {
     // const token = getToken()
     return fetch(`http://localhost:3001/api/thread/${threadId}`, {
