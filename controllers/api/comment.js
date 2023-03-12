@@ -8,9 +8,6 @@ function createComment(req, res, next) {
     const comment = req.body
     comment.owner = req.user._id
     const threadId = req.body.threadId
-    const postId = req.body.postId
-    const postObj = {}
-    const obj = {}
     Thread.findOne({ _id: threadId })
         .then((thread) => {
             const postIndex = thread.posts.findIndex((posts) => posts)
@@ -34,15 +31,91 @@ function createComment(req, res, next) {
 
 
 
+
+// function deleteComment(req, res, next) {
+//     const commentId = req.params.id
+//     const threadId = req.body.threadId
+//     Thread.findOne({ _id: threadId })
+//         .then((thread) => {
+//             const postIndex = thread.posts.findIndex((posts) => posts)
+//             const post = thread.posts[postIndex].comments
+//             console.log(post)
+//             post.remove(commentId)
+//             const commentObj = {}
+
+//             for (let j = 0; j < post.comments.length; j++) {
+//                 const commentIndex = post.comments[j]
+//                 commentObj[commentIndex._id] = commentIndex
+//             }
+
+//             return thread.save()
+//         })
+//         .then((post) => {
+//             res.status(200).json({ post: post })
+
+//         })
+//         .catch(next)
+// }
+
+
+// function deleteComment(req, res, next) {
+//     const commentId = req.params.id
+//     // console.log(commentId)
+//     const threadId = req.body.threadId
+//     Thread.findOne({ _id: threadId })
+//         .then((thread) => {
+//             console.log(thread.posts)
+//             // const postIndex = thread.posts.findIndex((posts) => posts)
+//             // const post = thread.posts[postIndex]
+//             // console.log(post)
+//             // return post.comments.remove()
+//             return thread.post.comments.deleteOne()
+//         })
+
+//         .then((post) => {
+//             res.status(204).json({ post: post })
+//         })
+//         .catch(next)
+// }
+
+
+
 function deleteComment(req, res, next) {
-    Thread.findById(req.params.id)
-        .then((comment) => {
-            comment.id(req.body.id).remove()
-            return comment.save()
+    const commentId = req.params.id
+    const threadId = req.body.threadId
+
+    Thread.findOne({ _id: threadId })
+        .then((thread) => {
+            const postsObj = thread.posts.reduce((obj, post) => {
+                obj[post._id] = post
+                return obj
+            }, {})
+            console.log(postsObj)
+
+            const postIndex = thread.posts.findIndex((post) => {
+                return post.comments.some((comment) => comment._id == commentId)
+            })
+            const post = thread.posts[postIndex]
+
+            post.comments.id(commentId).remove()
+            return thread.save()
         })
-        .then(() => res.Status(204))
+        .then(() => {
+            res.status(204).json({})
+        })
         .catch(next)
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
