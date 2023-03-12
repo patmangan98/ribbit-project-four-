@@ -1,8 +1,16 @@
+import {useState} from 'react'
+
+
 export default function Comment({comment}) {
-    console.log(comment)
+    // console.log(comment)
+   
+
     return (
     <>
-    <p>{comment.text}</p>
+  
+        <p>{comment.text}</p>
+
+    
     </>
     )
 }
