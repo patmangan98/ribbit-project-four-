@@ -3,13 +3,12 @@ import { createThread, indexThread } from "../../../utilities/thread-api"
 import { useState } from 'react'
 
 export default function CreateThread({user, setThreadArr}) {
-    
     const [thread, setThread] = useState({
         topic: "",
         owner: `${user._id}`,
         posts: []
     })
-    
+
     function handleChange(event) {
         setThread({
             ...thread,
@@ -21,6 +20,7 @@ export default function CreateThread({user, setThreadArr}) {
         event.preventDefault()
         try {
             const formData = {...thread}
+            // console.log(formData)
             await createThread(formData)
                 .then(() => {
                     return indexThread()
@@ -42,7 +42,7 @@ export default function CreateThread({user, setThreadArr}) {
                     type="text"
                     name="topic"
                     placeholder="Create A Topic For This Thread!"
-                    value={thread.topic}
+                    defaultValue={thread.topic}
                     onChange={handleChange}
                 />
                 <label className="form-label">Title</label>

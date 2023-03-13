@@ -14,7 +14,7 @@ router.delete('/:id', postsCtrl.deletePost)
 
 // router.get('/:postId', postsCtrl.indexPost)
 
-// router.get('/:id', postsCtrl.showPost)
+router.get('/:id', postsCtrl.showPost)
 
 
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)

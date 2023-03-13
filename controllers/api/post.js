@@ -36,20 +36,27 @@ function createPost(req, res, next) {
 //         .catch(next)
 // }
 
-// function showPost(req, res, next) {
-//     Thread.findById(req.params.id)
-//         .then((post) => {
-//             if (post.owner.equals(req.user._id)) {
-//                 return post.save()
-//             } else {
-//                 res.sendStatus(401);
-//             }
-//         })
-//         .then((post) => {
-//             return res.status(200).json({ post: post })
-//         })
-//         .catch(next)
-// }
+
+
+
+function showPost(req, res, next) {
+    const postId = req.params.id;
+
+  Thread.findOne({ 'thread.posts._id': postId })
+
+        .then((thread) => {
+            // console.log(thread)
+            const postIndex = thread.posts.findIndex(post => post._id == postId);
+            const post = thread.posts[postIndex];
+            return post
+        })
+        .then((post) => {
+            return res.status(200).json({ post: post });
+        })
+        .catch(next);
+}
+
+
 
 // function updatePost(req, res, next) {
 //     Thread.findById(req.params.id)
@@ -80,7 +87,7 @@ function deletePost(req, res, next) {
 module.exports = {
     createPost,
     // indexPost,
-    // showPost,
+    showPost,
     // updatePost,
     deletePost
 }
