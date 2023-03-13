@@ -1,10 +1,24 @@
-import Comment from "../Comment/Comment"
+import CreateAComment from "../Comment/Comment"
 import { useState } from "react"
 
-export default function Posts({post, index}) {
+export default function Posts({post, index, user}) {
     // console.log(post)
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
+
+
+
+    function handleShowComments(event){
+        try{
+
+        }catch(error){
+            console.error(error)
+
+        }
+    }
+
+
+
 
     function toggleCommentVisiblity () {
         setShowComments(!showComments)
@@ -12,7 +26,13 @@ export default function Posts({post, index}) {
   
     const [commentArr, setCommentArr] = useState(post.comments)
     // console.log(commentArr)
-    const commentMap = commentArr.map((comment, index) => (<Comment comment={comment} key={index}/>))
+    const commentMap = commentArr.map((comments, index) => (<CreateAComment 
+        comments={comments} 
+        key={index} 
+        user={user} 
+        setCommentArr={setCommentArr}
+        />
+        ))
 
     return (
     <>

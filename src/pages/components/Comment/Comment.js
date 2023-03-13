@@ -1,16 +1,29 @@
-import {useState} from 'react'
+import { useState } from "react";
+import { deleteComment } from "../../../utilities/comment-api";
+export default function Comment({ comment, setThreadComments }){
+// console.log(comment) //undefined
 
 
-export default function Comment({comment}) {
-    // console.log(comment)
-   
+function handleDelete(event){
+    event.preventDefault()
 
-    return (
-    <>
-  
-        <p>{comment.text}</p>
-
-    
-    </>
+    try{
+        deleteComment(comment._id)
+        .then((res) => res.json())
+        .then((resData) => setThreadComments(resData.threads))
+    }catch(error){
+            console.error(error)
+        }
+}
+ 
+    return(
+        <>
+        {/* <h1>{comment.text}</h1> */}
+        <p>This is a comment</p>
+        <button
+        onClick={handleDelete}
+        >Delete</button>
+        </>
+        
     )
 }
