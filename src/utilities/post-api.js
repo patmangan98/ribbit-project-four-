@@ -15,6 +15,7 @@ return fetch ("/api/posts/new", {
 }
 
 export function deletePost(id){
+    console.log(id)
     const token = getToken()
     return fetch (`/api/posts/${id}`, {
         method: "DELETE",

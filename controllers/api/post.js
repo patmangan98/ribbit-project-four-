@@ -39,13 +39,20 @@ function showPost(req, res, next) {
 
 
 function deletePost(req, res, next) {
-    Thread.findById(req.params.id)
-        .then((post) => {
+    const postId = req.params.postId
+    const threadId = req.params.threadId
+    Thread.findById(threadId)
+        .then((thread) => {
+
+            const postIndex = thread.posts.findIndex(post => post._id == postId)
+            const post = thread.posts[postIndex]
             if (post.owner.equals(req.user._id)) {
-                return post.deleteOne()
+                thread.posts.id(postId).remove()
             } else {
                 res.sendStatus(401)
             }
+
+            return thread.save()
         })
         .then(() => res.sendStatus(204))
         .catch(next)
