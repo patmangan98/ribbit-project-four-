@@ -23,3 +23,14 @@ export function deletePost(id){
         },
     })
 }
+
+export function showPost(id){
+    const token = getToken()
+
+    return fetch (`/api/posts/${id}`, {
+        method: "GET",
+        headers:{
+            'Authorization': `Bearer ${token}`,
+        },
+    })
+}

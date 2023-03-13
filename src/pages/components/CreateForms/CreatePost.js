@@ -44,7 +44,7 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
                 <label >Title</label>
                 <input
                     name="title"
-                    type="text"
+
                     onChange={handleChange}
                     value={post.title}
                 />
@@ -64,6 +64,7 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
                 />
 
                 <button
+                    type="submit"
                     onClick={handleSubmit}>
                     Create Post
                 </button>
