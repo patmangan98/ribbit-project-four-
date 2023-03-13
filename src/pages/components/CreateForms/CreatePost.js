@@ -38,36 +38,47 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
 
     return (
         <>
-            <form>
+            <div className="container">
+                <form>
+                    <div className="form-floating">
+                        <input
+                            className="form-control"
+                            placeholder="title"
+                            name="title"
+                            onChange={handleChange}
+                            value={post.title}
+                        />
+                        <label >Title</label>
+                    </div>
+                    <div className="form-floating">
+                        <input
+                            className="form-control"
+                            placeholder="text"
+                            name="text"
+                            onChange={handleChange}
+                            value={post.text}
+                        />
+                        <label className="form-label">Text</label>
+                    </div>
+                    <div className="form-floating">
+                        <input
+                            className="form-control"
+                            placeholder="category"
+                            name="category"
+                            onChange={handleChange}
+                            value={post.category}
+                        />
+                        <label className="form-label">Category</label>
+                    </div>
+                    <button
+                        className="btn btn-success my-3"
+                        type="submit"
+                        onClick={handleSubmit}>
+                        Create Post
+                    </button>
 
-                <label >Title</label>
-                <input
-                    name="title"
-
-                    onChange={handleChange}
-                    value={post.title}
-                />
-
-                <label>Text</label>
-                <input
-                    name="text"
-                    onChange={handleChange}
-                    value={post.text}
-                />
-
-                <label>Category</label>
-                <input
-                    name="category"
-                    onChange={handleChange}
-                    value={post.category}
-                />
-
-                <button
-                    type="submit"
-                    onClick={handleSubmit}>
-                    Create Post
-                </button>
-            </form>
+                </form>
+            </div>
         </>
     )
 }

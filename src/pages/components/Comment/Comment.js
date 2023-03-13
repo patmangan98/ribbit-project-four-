@@ -17,13 +17,14 @@ function handleDelete(event){
 }
  
     return(
-        <>
-        {/* <h1>{comment.text}</h1> */}
-        <p>This is a comment</p>
+        <div className="container border rounded-4 my-2 shadow-sm">
+        
+        <p className="mt-2">This is a comment</p>
         <button
+        className="btn btn-danger mb-2"
         onClick={handleDelete}
         >Delete</button>
-        </>
+        </div>
         
     )
 }
