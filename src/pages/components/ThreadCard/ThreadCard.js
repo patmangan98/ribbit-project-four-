@@ -4,8 +4,6 @@ import { deleteThread, indexThread } from "../../../utilities/thread-api"
 
 export default function ThreadCard ({thread, setThreadArr}) {
 
-    let {threadId} = useParams()
-
     function handleDeleteClick(event) {
         event.preventDefault()
         try {

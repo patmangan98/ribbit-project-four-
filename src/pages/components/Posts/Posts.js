@@ -1,32 +1,34 @@
 // import CreateAComment from "../Comment/Comment"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
 import { showPost } from "../../../utilities/post-api"
 export default function Posts({post, thread, user, setThreadPosts}) {
 
-    console.log(post)
+    console.log(thread)
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
 
     const [deleteAPost, setDeletePost] = useState({
         threadId: `${thread._id}`
     })
-
+console.log(deleteAPost)
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
-
+    useEffect(() => {
+		showPost(post._id)
+			.then((res) => res.json())
+			.then((resData) => setDeletePost(resData.posts));
+	}, [])
 
     function handleDelete(event){
         event.preventDefault()
         try{
             deletePost(thread._id, post._id)
-            .then(() => {
-                return showPost()
-            })
-            .then((res) => res.json())
-            .then((resData) => setThreadPosts(resData.posts))
+                .then((res) => res.json())
+                .then((resData) => 
+                setThreadPosts(resData.posts))
         }catch(error){
             console.error(error)
         }
