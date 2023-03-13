@@ -2,7 +2,7 @@
 import { useState } from "react"
 
 import Comment from "../Comment/Comment"
-export default function Posts({post, thread, user}) {
+export default function Posts({post, thread, user, setThreadArr}) {
 
     // console.log(post)
     // console.log(post.comments)
@@ -27,12 +27,12 @@ export default function Posts({post, thread, user}) {
         key={index} 
         user={user} 
         thread={thread}
-
+        setThreadArr ={setThreadArr}
         setCommentArr={setCommentArr}
     />
     ))
 
-        console.log(commentArr)
+        // console.log(commentArr)
     return (
         <>
             <div className="container  border rounded-4 shadow-sm my-4">

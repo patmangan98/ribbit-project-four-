@@ -6,7 +6,7 @@ import CreateAPost from "../components/CreateForms/CreatePost"
 
 import UpdateThread from '../components/UpdateThread/UpdateThread'
 
-export default function DetailThread({thread, user}) {
+export default function DetailThread({thread, user, setThreadArr }) {
 
 
     // console.log(thread.posts)
@@ -23,7 +23,7 @@ export default function DetailThread({thread, user}) {
 
     // )
     const postMap = threadPosts.map((post, index, comment, i) =>
-    (<Posts post={post} key={index} user={user} thread={thread}/>
+    (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr}/>
     ))
 
     // console.log(commentMap)
