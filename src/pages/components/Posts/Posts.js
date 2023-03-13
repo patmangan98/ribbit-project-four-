@@ -2,11 +2,16 @@
 import { useState } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
+import { showPost } from "../../../utilities/post-api"
 export default function Posts({post, thread, user, setThreadPosts}) {
 
     console.log(post)
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
+
+    const [deleteAPost, setDeletePost] = useState({
+        threadId: `${thread._id}`
+    })
 
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
@@ -16,7 +21,10 @@ export default function Posts({post, thread, user, setThreadPosts}) {
     function handleDelete(event){
         event.preventDefault()
         try{
-            deletePost(post._id)
+            deletePost(thread._id, post._id)
+            .then(() => {
+                return showPost()
+            })
             .then((res) => res.json())
             .then((resData) => setThreadPosts(resData.posts))
         }catch(error){
@@ -53,6 +61,7 @@ export default function Posts({post, thread, user, setThreadPosts}) {
                 <button
                     className="btn btn-success mb-3"
                     onClick={handleDelete}
+                    data-id={deleteAPost.threadId}
                     >Delete Post
                 </button>
             </div>

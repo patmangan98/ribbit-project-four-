@@ -14,10 +14,10 @@ return fetch ("/api/posts/new", {
 })
 }
 
-export function deletePost(id){
-    console.log(id)
+export function deletePost(threadId, postId){
+    console.log(threadId, postId)
     const token = getToken()
-    return fetch (`/api/posts/${id}`, {
+    return fetch (`/api/posts/${threadId}/${postId}`, {
         method: "DELETE",
         headers:{
             'Authorization': `Bearer ${token}`,
