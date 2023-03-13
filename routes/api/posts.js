@@ -7,7 +7,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 router.post('/new', postsCtrl.createPost)
 
-router.delete('/:id', postsCtrl.deletePost)
+router.delete('/:threadId/:postId', postsCtrl.deletePost)
 
 router.get('/:id', postsCtrl.showPost)
 

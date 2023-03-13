@@ -30,59 +30,10 @@ function createComment(req, res, next) {
 }
 
 
-
-
-// function deleteComment(req, res, next) {
-//     const commentId = req.params.id
-//     const threadId = req.body.threadId
-//     Thread.findOne({ _id: threadId })
-//         .then((thread) => {
-//             const postIndex = thread.posts.findIndex((posts) => posts)
-//             const post = thread.posts[postIndex].comments
-//             console.log(post)
-//             post.remove(commentId)
-//             const commentObj = {}
-
-//             for (let j = 0; j < post.comments.length; j++) {
-//                 const commentIndex = post.comments[j]
-//                 commentObj[commentIndex._id] = commentIndex
-//             }
-
-//             return thread.save()
-//         })
-//         .then((post) => {
-//             res.status(200).json({ post: post })
-
-//         })
-//         .catch(next)
-// }
-
-
-// function deleteComment(req, res, next) {
-//     const commentId = req.params.id
-//     // console.log(commentId)
-//     const threadId = req.body.threadId
-//     Thread.findOne({ _id: threadId })
-//         .then((thread) => {
-//             console.log(thread.posts)
-//             // const postIndex = thread.posts.findIndex((posts) => posts)
-//             // const post = thread.posts[postIndex]
-//             // console.log(post)
-//             // return post.comments.remove()
-//             return thread.post.comments.deleteOne()
-//         })
-
-//         .then((post) => {
-//             res.status(204).json({ post: post })
-//         })
-//         .catch(next)
-// }
-
-
-
 function deleteComment(req, res, next) {
     const commentId = req.params.commentId
     const threadId = req.params.threadId
+
     Thread.findOne({ _id: threadId })
         .then((thread) => {
             console.log(thread)
@@ -91,7 +42,7 @@ function deleteComment(req, res, next) {
             })
             const post = thread.posts[postIndex]
             post.comments.id(commentId).remove()
-            console.log(post.comments) //getting the comments needed
+            console.log(post.comments) 
             return thread.save()
         })
         .then(() => {
@@ -99,9 +50,6 @@ function deleteComment(req, res, next) {
         })
         .catch(next)
 }
-
-
-
 
 
 

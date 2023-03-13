@@ -8,15 +8,9 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 router.post('/new', commentCtrl.createComment)
 
 
-// router.get('/:id', commentCtrl.showComment)
-
-
-// router.patch("/:id", commentCtrl.updateComment)
-
 router.delete('/:threadId/:commentId', commentCtrl.deleteComment)
 
 
-// router.get('/:id', commentCtrl.indexComment)
 
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 

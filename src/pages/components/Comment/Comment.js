@@ -24,7 +24,7 @@ function handleDelete(event){
     }catch(error){
             console.error(error)
         }
-}
+    }
 
 
 
@@ -67,6 +67,7 @@ function handleReRender () {
         data-id={deleteAComment.threadId}
         >Delete</button>
         </div>
+
         </>
     )
 }
