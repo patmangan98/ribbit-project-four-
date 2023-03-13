@@ -2,8 +2,13 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Posts from "../components/Posts/Posts"
 import CreateAPost from "../components/CreateForms/CreatePost"
-console.log()
-export default function DetailThread({ thread, user }) {
+
+
+import UpdateThread from '../components/UpdateThread/UpdateThread'
+
+export default function DetailThread({thread, user}) {
+
+
     // console.log(thread.posts)
     let { threadId } = useParams()
 
@@ -24,11 +29,13 @@ export default function DetailThread({ thread, user }) {
     // console.log(commentMap)
 
     return (
-        <>
-            {/* <Posts/> */}
-            <CreateAPost user={user} setThreadPosts={setThreadPosts} thread={thread} />
-            {postMap}
-            {/* {commentMap} */}
-        </>
+
+    <>
+    <UpdateThread thread={thread}/>
+    {/* <Posts/> */}
+    <CreateAPost user={user} setThreadPosts={setThreadPosts} thread={thread}/>
+    {postMap}
+    </>
+
     )
 }

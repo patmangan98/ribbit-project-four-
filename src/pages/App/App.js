@@ -3,7 +3,7 @@ import { Routes, Route} from 'react-router-dom'
 import AuthPage from '../AuthPage/AuthPage';
 import DetailThread from '../DetailThread/DetailThread'
 import GlobalPage from '../GlobalPage/GlobalPage';
-import CreateThread from '../CreateThread/CreateThread';
+import MyThreads from '../MyThreads/MyThreads';
 import { indexThread } from "../../utilities/thread-api"
 import NavBar from '../components/NavBar/NavBar';
 import './App.css';
@@ -33,7 +33,7 @@ export default function App() {
 					<NavBar user={user} setUser={setUser}/>
 					<Routes>
 						<Route path='/global' element={<GlobalPage user={user}/>} />
-						<Route path='/create' element={<CreateThread />} />
+						<Route path='/mythreads' element={<MyThreads user={user} />} />
 						{/* <Route path= '/thread/:threadId' element ={<DetailThread />} /> */}
 						{threadRoutes}
 					</Routes>

@@ -37,15 +37,20 @@ function handleDelete(event){
 
  
     return(
+
         <>
         <p>{comments.text}</p>
-        {/* <p>This is a comment</p> */}
-        {/* {commentMap} */}
+        </>
+        <div className="container border rounded-4 my-2 shadow-sm">
+        
+        <p className="mt-2">This is a comment</p>
+
         <button
+        className="btn btn-danger mb-2"
         onClick={handleDelete}
         data-id={deleteAComment.threadId}
         >Delete</button>
-        </>
+        </div>
         
     )
 }

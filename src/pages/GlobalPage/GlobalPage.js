@@ -24,7 +24,7 @@ export default function GlobalPage({user}) {
 		return (
 		<>	
 			<Link to = '/auth'>
-				<button>Sign In</button>
+				<button className='btn btn-success'>Sign In</button>
 			</Link>
 			<h2>Welcome</h2>
 			{threadMap}
@@ -34,7 +34,7 @@ export default function GlobalPage({user}) {
 
 	return (
 		<>
-		<h2>Discover New Ideas!</h2>
+		<h2 className='my-5'>Discover New Ideas!</h2>
 		<CreateThread user={user} setThreadArr ={setThreadArr}/>
 
 		{threadMap}
