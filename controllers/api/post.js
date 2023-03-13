@@ -21,56 +21,30 @@ function createPost(req, res, next) {
 }
 
 
-// function indexPost(req, res, next) {
-//     const postId = req.params
-//     console.log(postId)
-//     Thread.find({}.posts)
-//         .populate('posts')
-//         .populate('owner')
-//         .then((threads) => {
-//             return threads.map((threads) => threads)
-//         })
-//         .then((posts) => {
-//             return res.status(200).json({ posts: posts })
-//         })
-//         .catch(next)
-// }
 
-// function showPost(req, res, next) {
-//     Thread.findById(req.params.id)
-//         .then((post) => {
-//             if (post.owner.equals(req.user._id)) {
-//                 return post.save()
-//             } else {
-//                 res.sendStatus(401);
-//             }
-//         })
-//         .then((post) => {
-//             return res.status(200).json({ post: post })
-//         })
-//         .catch(next)
-// }
+function showPost(req, res, next) {
+    const postId = req.params.id
+    Thread.findOne({ 'thread.posts._id': postId })
+        .then((thread) => {
+            const postIndex = thread.posts.findIndex(post => post._id == postId)
+            const post = thread.posts[postIndex]
+            return post
+        })
+        .then((post) => {
+            return res.status(200).json({ post: post })
+        })
+        .catch(next)
+}
 
-// function updatePost(req, res, next) {
-//     Thread.findById(req.params.id)
-//         .then((post) => {
-//             if (post.owner.equals(req.user._id)) {
-//                 return post.updateOne(req.body);
-//             } else {
-//                 res.sendStatus(401);
-//             }
-//         })
-//         .then((post) => res.status(204).json(post))
-//         .catch(next)
-// }
+
 
 function deletePost(req, res, next) {
     Thread.findById(req.params.id)
         .then((post) => {
             if (post.owner.equals(req.user._id)) {
-                return post.deleteOne();
+                return post.deleteOne()
             } else {
-                res.sendStatus(401);
+                res.sendStatus(401)
             }
         })
         .then(() => res.sendStatus(204))
@@ -79,8 +53,6 @@ function deletePost(req, res, next) {
 
 module.exports = {
     createPost,
-    // indexPost,
-    // showPost,
-    // updatePost,
+    showPost,
     deletePost
 }

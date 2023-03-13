@@ -24,7 +24,7 @@ export default function App() {
 		.then((resData) => setThreadArr(resData.threads))
   }, [])
 
-  const threadRoutes = threadArr.map((thread) => <Route key={thread._id} path= {`/thread/${thread._id}`} element={<DetailThread thread={thread}/>}/>)
+  const threadRoutes = threadArr.map((thread) => <Route key={thread._id} path= {`/thread/${thread._id}`} element={<DetailThread user={user} thread={thread}/>}/>)
 
  return (
 		<main className='App'>
