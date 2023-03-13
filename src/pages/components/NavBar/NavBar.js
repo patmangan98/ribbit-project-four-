@@ -12,7 +12,7 @@ export default function NavBar({ user, setUser }) {
 	return (
 		<>
 		<nav className="navbar bg-dark fluid py-3">
-			<Link className="nav-link text-white" to='/create'>Create Thread</Link>
+			<Link className="nav-link text-white" to='/mythreads'>My Threads</Link>
             <Link className="nav-link text-white" to='/global'>Global Page</Link>
 			<Link className="nav-link text-white" to="" onClick={handleLogOut}>Log Out</Link>
 		</nav>
