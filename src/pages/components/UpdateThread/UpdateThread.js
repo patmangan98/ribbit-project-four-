@@ -28,7 +28,7 @@ export default function UpdateThread({thread}) {
 
 
     return (
- 
+        <div className="container-sm py-4">
         <form>
             <div className="form-floating">
                 <input
@@ -41,8 +41,8 @@ export default function UpdateThread({thread}) {
                 />
                <label className="form-label">Title</label>
             </div>
-            <button onClick={handleSubmit}>Update Thread</button>
+            <button className="btn btn-success my-3" onClick={handleSubmit}>Update Thread</button>
         </form>
-        
+        </div>
     )
 }

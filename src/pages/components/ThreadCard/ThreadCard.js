@@ -26,16 +26,16 @@ export default function ThreadCard ({thread, setThreadArr}) {
     // console.log(thread)
 
     return ( 
-        <div>
+        <div className="container border rounded-4 shadow-sm my-3">
         
         
     
-        <p>{thread.topic}</p>
+        <h3 className="my-2">{thread.topic}</h3>
 
-        <button onClick={handleDeleteClick}>Delete</button>
+        <button className="btn btn-danger" onClick={handleDeleteClick}>Delete</button>
         
         <Link to = {`/thread/${thread._id}`}>
-        <button>Inspect Thread</button>
+        <button className="btn btn-success mx-3 my-2">Inspect Thread</button>
         </Link>
 
 

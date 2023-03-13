@@ -1,17 +1,17 @@
 import CreateAComment from "../Comment/Comment"
 import { useState } from "react"
 
-export default function Posts({post, index, user}) {
+export default function Posts({ post, index, user }) {
     // console.log(post)
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
 
 
 
-    function handleShowComments(event){
-        try{
+    function handleShowComments(event) {
+        try {
 
-        }catch(error){
+        } catch (error) {
             console.error(error)
 
         }
@@ -20,33 +20,34 @@ export default function Posts({post, index, user}) {
 
 
 
-    function toggleCommentVisiblity () {
+    function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
-  
+
     const [commentArr, setCommentArr] = useState(post.comments)
     // console.log(commentArr)
-    const commentMap = commentArr.map((comments, index) => (<CreateAComment 
-        comments={comments} 
-        key={index} 
-        user={user} 
+    const commentMap = commentArr.map((comments, index) => (<CreateAComment
+        comments={comments}
+        key={index}
+        user={user}
         setCommentArr={setCommentArr}
-        />
-        ))
+    />
+    ))
 
     return (
-    <>
-    <h3>{post.category}</h3>
-    <p>{post.title}</p>
-    <p>{post.text}</p>
-    <button onClick={toggleCommentVisiblity}>showComments</button>
-    
+        <>
+            <div className="container  border rounded-4 shadow-sm my-4">
+                <h3 className="mt-2">{post.category}</h3>
+                <p>{post.title}</p>
+                <p>{post.text}</p>
+                <button
+                    className="btn btn-success mb-3"
+                    onClick={toggleCommentVisiblity}
+                    >Show Comments
+                </button>
+            </div>
+            {showComments && commentMap}
 
-    {showComments && commentMap}
-       
-        
-    {/* {commentArr} */}
-    {/* <Comment/> */}
-    </>
+        </>
     )
 }

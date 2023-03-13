@@ -4,7 +4,7 @@ import Posts from "../components/Posts/Posts"
 import { showThread } from "../../utilities/thread-api"
 import Comment from "../components/Comment/Comment"
 import CreateAPost from "../components/CreateForms/CreatePost"
-
+import UpdateThread from '../components/UpdateThread/UpdateThread'
 
 export default function DetailThread({thread, user}) {
 

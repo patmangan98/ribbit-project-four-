@@ -10,14 +10,15 @@ export default function NavBar({ user, setUser }) {
 	}
 
 	return (
-		<nav>
-			<Link to='/create'>Create Thread</Link>
-			&nbsp; | &nbsp;
-            <Link to='/global'>Global Page</Link>
-			&nbsp;
-			<span>Welcome, { user.name }</span>
-			&nbsp;&nbsp;
-			<Link to="" onClick={handleLogOut}>Log Out</Link>
+		<>
+		<nav className="navbar bg-dark fluid py-3">
+			<Link className="nav-link text-white" to='/create'>Create Thread</Link>
+            <Link className="nav-link text-white" to='/global'>Global Page</Link>
+			<Link className="nav-link text-white" to="" onClick={handleLogOut}>Log Out</Link>
 		</nav>
+		<>
+		<span className="mt-3">Welcome, { user.name }</span>
+		</>
+		</>
 	)
 }
