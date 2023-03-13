@@ -31,7 +31,6 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
                 })
                 .then((res) => res.json())
                 .then((resData) => setThreadPosts(resData.posts))
-            console.log(formData)
         } catch (error) {
             console.log(error)
         }

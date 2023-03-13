@@ -41,11 +41,11 @@ export function deleteThread(threadId) {
 
 
 export function showThread(threadId) {
-    // const token = getToken()
+    const token = getToken()
     return fetch(`http://localhost:3001/api/thread/${threadId}`, {
         method: "GET",
-        // headers : {
-        //     Authorization: `Bearer ${token}`,
-        // }
+        headers : {
+            Authorization: `Bearer ${token}`,
+        }
     })
 }
