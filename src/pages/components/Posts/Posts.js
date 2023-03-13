@@ -17,11 +17,11 @@ console.log(deleteAPost)
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
-    useEffect(() => {
-		showPost(post._id)
-			.then((res) => res.json())
-			.then((resData) => setDeletePost(resData.posts));
-	}, [])
+    // useEffect(() => {
+	// 	showPost(post._id)
+	// 		.then((res) => res.json())
+	// 		.then((resData) => setDeletePost(resData.posts));
+	// }, [])
 
     function handleDelete(event){
         event.preventDefault()
@@ -29,7 +29,7 @@ console.log(deleteAPost)
             deletePost(thread._id, post._id)
                 .then((res) => res.json())
                 .then((resData) => 
-                setThreadPosts(resData.posts))
+                setThreadArr(resData.posts))
         }catch(error){
             console.error(error)
         }
