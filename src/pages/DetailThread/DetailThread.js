@@ -6,7 +6,7 @@ import UpdateThread from '../components/UpdateThread/UpdateThread'
 
 export default function DetailThread({thread, user}) {
 
-
+console.log("adding this for commit")
     const [threadPosts, setThreadPosts] = useState(thread.posts)
 
     const postMap = threadPosts.map((post, index) =>
