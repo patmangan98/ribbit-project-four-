@@ -81,27 +81,21 @@ function createComment(req, res, next) {
 
 
 function deleteComment(req, res, next) {
-    const commentId = req.params.id
-    const threadId = req.body.threadId
-
+    const commentId = req.params.commentId
+    const threadId = req.params.threadId
     Thread.findOne({ _id: threadId })
         .then((thread) => {
-            const postsObj = thread.posts.reduce((obj, post) => {
-                obj[post._id] = post
-                return obj
-            }, {})
-            console.log(postsObj)
-
+            console.log(thread)
             const postIndex = thread.posts.findIndex((post) => {
                 return post.comments.some((comment) => comment._id == commentId)
             })
             const post = thread.posts[postIndex]
-
             post.comments.id(commentId).remove()
+            console.log(post.comments) //getting the comments needed
             return thread.save()
         })
         .then(() => {
-            res.status(204).json({})
+            res.sendStatus(204)
         })
         .catch(next)
 }

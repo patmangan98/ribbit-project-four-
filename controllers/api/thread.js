@@ -23,6 +23,7 @@ function indexThread (req, res, next){
         .catch(next)
 }
 
+
 function showThread(req, res, next){
     Thread.findById(req.params.id)
     .then((thread) =>{

@@ -1,21 +1,15 @@
-import CreateAComment from "../Comment/Comment"
+// import CreateAComment from "../Comment/Comment"
 import { useState } from "react"
 
-export default function Posts({ post, index, user }) {
+import Comment from "../Comment/Comment"
+export default function Posts({post, thread, user}) {
+
     // console.log(post)
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
 
 
 
-    function handleShowComments(event) {
-        try {
-
-        } catch (error) {
-            console.error(error)
-
-        }
-    }
 
 
 
@@ -26,14 +20,19 @@ export default function Posts({ post, index, user }) {
 
     const [commentArr, setCommentArr] = useState(post.comments)
     // console.log(commentArr)
-    const commentMap = commentArr.map((comments, index) => (<CreateAComment
-        comments={comments}
-        key={index}
-        user={user}
+
+    const commentMap = commentArr.map((comments, index) => (
+        <Comment 
+        comments={comments} 
+        key={index} 
+        user={user} 
+        thread={thread}
+
         setCommentArr={setCommentArr}
     />
     ))
 
+        console.log(commentArr)
     return (
         <>
             <div className="container  border rounded-4 shadow-sm my-4">
