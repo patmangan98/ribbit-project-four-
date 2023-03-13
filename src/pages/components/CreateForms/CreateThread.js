@@ -35,6 +35,7 @@ export default function CreateThread({user, setThreadArr}) {
 
 
     return (
+        <div className="container-sm my-3">
         <form>
             <div className="form-floating">
                 <input
@@ -47,9 +48,9 @@ export default function CreateThread({user, setThreadArr}) {
                 />
                 <label className="form-label">Title</label>
             </div>
-            <button onClick={handleSubmit}>Create Thread</button>
+            <button className="btn btn-success my-3 " onClick={handleSubmit}>Create Thread</button>
         </form>
-        
+        </div>
     )
 }
 
