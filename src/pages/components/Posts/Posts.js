@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
-import { showPost } from "../../../utilities/post-api"
-export default function Posts({post, thread, user, setThreadPosts}) {
+
+export default function Posts({post, thread, user, setThreadArr}) {
+
 
     console.log(thread)
     // console.log(post.comments)
@@ -44,11 +45,12 @@ console.log(deleteAPost)
         key={index} 
         user={user} 
         thread={thread}
+        setThreadArr ={setThreadArr}
         setCommentArr={setCommentArr}
     />
     ))
 
-        console.log(commentArr)
+        // console.log(commentArr)
     return (
         <>
             <div className="container  border rounded-4 shadow-sm my-4">

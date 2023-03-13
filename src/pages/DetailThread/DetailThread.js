@@ -4,14 +4,19 @@ import Posts from "../components/Posts/Posts"
 import CreateAPost from "../components/CreateForms/CreatePost"
 import UpdateThread from '../components/UpdateThread/UpdateThread'
 
-export default function DetailThread({thread, user}) {
+export default function DetailThread({thread, user, setThreadArr }) {
 
 
     const [threadPosts, setThreadPosts] = useState(thread.posts)
 
-    const postMap = threadPosts.map((post, index) =>
-    (<Posts post={post} key={index} user={user} thread={thread} setThreadPosts={setThreadPosts}/>
-    ))
+
+    // const commentMap = threadPosts.map((post, index) => 
+    // (<Comment post={post} key={index} setThreadComments={setThreadComments}/>)
+
+    // )
+    const postMap = threadPosts.map((post, index, comment, i) =>
+    (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr}/>))
+
 
     return (
 
