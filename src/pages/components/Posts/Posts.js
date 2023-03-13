@@ -1,21 +1,21 @@
-import CreateAComment from "../Comment/Comment"
+// import CreateAComment from "../Comment/Comment"
 import { useState } from "react"
-
-export default function Posts({post, index, user}) {
+import Comment from "../Comment/Comment"
+export default function Posts({post, thread, user}) {
     // console.log(post)
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
 
 
 
-    function handleShowComments(event){
-        try{
+    // function handleShowComments(event){
+    //     try{
 
-        }catch(error){
-            console.error(error)
+    //     }catch(error){
+    //         console.error(error)
 
-        }
-    }
+    //     }
+    // }
 
 
 
@@ -26,14 +26,17 @@ export default function Posts({post, index, user}) {
   
     const [commentArr, setCommentArr] = useState(post.comments)
     // console.log(commentArr)
-    const commentMap = commentArr.map((comments, index) => (<CreateAComment 
+    const commentMap = commentArr.map((comments, index) => (
+        <Comment 
         comments={comments} 
         key={index} 
         user={user} 
+        thread={thread}
         setCommentArr={setCommentArr}
         />
         ))
 
+        console.log(commentArr)
     return (
     <>
     <h3>{post.category}</h3>

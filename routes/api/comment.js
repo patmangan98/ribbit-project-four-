@@ -13,7 +13,7 @@ router.post('/new', commentCtrl.createComment)
 
 // router.patch("/:id", commentCtrl.updateComment)
 
-router.delete('/:id', commentCtrl.deleteComment)
+router.delete('/:threadId/:commentId', commentCtrl.deleteComment)
 
 
 // router.get('/:id', commentCtrl.indexComment)
