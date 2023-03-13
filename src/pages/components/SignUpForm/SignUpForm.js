@@ -102,7 +102,7 @@ export default class SignUpForm extends Component {
                             />
                             <label className='form-label'>Confirm</label>
                         </div>
-                        <button type='submit' disabled={disable}>Sign Up</button>
+                        <button className="btn btn-success mx-3 my-2" type='submit' disabled={disable}>Sign Up</button>
                     </form>
                     <p className='error-message' >{this.state.error}</p>
                 </div>

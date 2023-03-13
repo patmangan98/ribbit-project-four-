@@ -40,7 +40,6 @@ function handleDelete(event){
 
         <>
         <p>{comments.text}</p>
-        </>
         <div className="container border rounded-4 my-2 shadow-sm">
         
         <p className="mt-2">This is a comment</p>
@@ -51,6 +50,7 @@ function handleDelete(event){
         data-id={deleteAComment.threadId}
         >Delete</button>
         </div>
+        </>
         
     )
 }
