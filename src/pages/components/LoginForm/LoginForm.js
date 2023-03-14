@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, redirect } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 import { logIn } from '../../../utilities/users-service'
 import './LoginForm.css'
 
@@ -29,8 +29,7 @@ export default function LoginForm({ setUser }) {
     }
 
     return (
-        <div className='d-flex justify-content-center col'>
-            {/* <div className='container-sm row'> */}
+        <div className='d-flex justify-content-center col' id='tabs'>
                 <div className='login-form form-container'>
                     <form autoComplete='off' onSubmit={handleSubmit}>
                         <div className='row'>
@@ -44,10 +43,10 @@ export default function LoginForm({ setUser }) {
                                     onChange={handleChange}
                                     required
                                 />
-                                <label className='form-label'>Email</label>
+                                <label className='form-label mx-2'>Email</label>
                             </div>
                         </div>
-                        <div className='row'>
+                        <div className='row' id='tabs'>
                             <div className='form-floating'>
                                 <input
                                     className='form-control'
@@ -58,18 +57,17 @@ export default function LoginForm({ setUser }) {
                                     onChange={handleChange}
                                     required
                                 />
-                                <label className='form-label'>Password</label>
+                                <label className='form-label mx-2' >Password</label>
                             </div>
                         </div>
                         
                         <button 
                         className="btn btn-success mx-3 my-2"
-                        type='submit'>Log In</button> 
+                        type='submit' >Log In</button> 
                        
                     </form>
-                    <p className='error-message' >{error}</p>
+                    <p className='error-message'>{error}</p>
                 </div>
-            {/* </div> */}
         </div>
     )
 }
