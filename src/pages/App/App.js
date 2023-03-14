@@ -7,17 +7,13 @@ import MyThreads from '../MyThreads/MyThreads';
 import { indexThread } from "../../utilities/thread-api"
 import NavBar from '../components/NavBar/NavBar';
 import './App.css';
-
-
 import { getUser } from '../../utilities/users-service'
-// import { use } from '../../../routes/api/users';
 
 export default function App() {
   const [user, setUser] = useState(getUser())
 
   const [threadArr, setThreadArr] = useState([])
 
-  //use effect
   useEffect(() => {
 	indexThread()
 		.then((res) => res.json())
@@ -35,7 +31,6 @@ export default function App() {
 					<Routes>
 						<Route path='/global' element={<GlobalPage user={user}/>} />
 						<Route path='/mythreads' element={<MyThreads user={user} />} />
-						{/* <Route path= '/thread/:threadId' element ={<DetailThread />} /> */}
 						{threadRoutes}
 					</Routes>
 				</>
