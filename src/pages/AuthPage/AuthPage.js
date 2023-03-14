@@ -12,7 +12,7 @@ export default function AuthPage({ setUser }) {
 	return (
 		<>
 			<h1 className="mt-3">ribbit</h1>
-			<div>
+			<div className="container-sm w-25">
 			<Tabs
 			id='login-tabs'
 			activeKey={key}
