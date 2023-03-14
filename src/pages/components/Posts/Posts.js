@@ -1,22 +1,23 @@
 import { useState } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
-
+import CreateAComment from "../CreateForms/CreateComment"
+// import delete
 export default function Posts({post, thread, user, setThreadArr}) {
 
 
-    console.log(thread)
     const [showComments, setShowComments] = useState(false)
 
     const [deleteAPost] = useState({
-        threadId: `${thread._id}`
+        threadId: `${thread._id}`,
+        postId: `${post._id}`
     })
 console.log(deleteAPost)
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
 
-    function handleDelete(event){
+    function handleDeletePost(event){
         event.preventDefault()
         try{
             deletePost(thread._id, post._id)
@@ -29,6 +30,7 @@ console.log(deleteAPost)
     }
 
 
+
     const [commentArr, setCommentArr] = useState(post.comments)
 
     const commentMap = commentArr.map((comments, index) => (
@@ -39,6 +41,7 @@ console.log(deleteAPost)
         thread={thread}
         setThreadArr ={setThreadArr}
         setCommentArr={setCommentArr}
+        post={post}
     />
     ))
 
@@ -55,11 +58,20 @@ console.log(deleteAPost)
                 </button>
                 <button
                     className="btn btn-success mb-3"
-                    onClick={handleDelete}
+                    onClick={handleDeletePost}
                     data-id={deleteAPost.threadId}
                     >Delete Post
                 </button>
+
+                <CreateAComment 
+                post={post} 
+                user={user}
+                thread={thread}
+                setCommentArr={setCommentArr}
+                />
+             
             </div>
+            
             {showComments && commentMap}
 
         </>

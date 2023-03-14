@@ -3,20 +3,25 @@ import Posts from "../components/Posts/Posts"
 import CreateAPost from "../components/CreateForms/CreatePost"
 import UpdateThread from '../components/UpdateThread/UpdateThread'
 
-export default function DetailThread({ thread, user, setThreadArr }) {
+export default function DetailThread({ post, thread, user, setThreadArr }) {
 
     console.log("adding this for commit")
     const [threadPosts, setThreadPosts] = useState(thread.posts)
 
     const postMap = threadPosts.map((post, index, comment, i) =>
-        (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr} />))
+        (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr} comment={comment}/>))
 
     return (
 
         <>
             <UpdateThread thread={thread} />
             {/* <Posts/> */}
-            <CreateAPost user={user} setThreadPosts={setThreadPosts} thread={thread} />
+            <CreateAPost
+            user={user} 
+            setThreadPosts={setThreadPosts} 
+            thread={thread} 
+            
+            />
             {postMap}
         </>
 
