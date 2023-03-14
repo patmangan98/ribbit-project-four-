@@ -1,8 +1,16 @@
-
-/* .bg-color {
-    background-color: #f3ebcf;
-} */
-
 h2 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
+
+home:hover {
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 3px;
+}
+#frog:hover {
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 3px;
+ }
+

@@ -39,3 +39,8 @@
 /* * {
   background-color: #f3ebcf;
 } */
+#frog:hover {
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 3px;
+}

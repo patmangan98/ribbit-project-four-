@@ -14,6 +14,10 @@ export default function App() {
 
   const [threadArr, setThreadArr] = useState([])
 
+  function handleClick() {
+	window.scrollTo(0, 0)
+}
+
   useEffect(() => {
 	indexThread()
 		.then((res) => res.json())
@@ -41,7 +45,8 @@ export default function App() {
 					<Route path='/global' element={<GlobalPage user={user}/>} />
 					<Route path='/auth' element={<AuthPage setUser={setUser}/>} />
 				</Routes>
-				</>
+				<div><p id='frog' onClick={handleClick} className="hop-back-up">🐸</p></div>
+				</>				
 			)}
 		</main>
 	)
