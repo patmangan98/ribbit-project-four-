@@ -1,15 +1,10 @@
 import { Link } from "react-router-dom";
-import {useState} from "react"
+import { useState } from "react"
 import * as userService from '../../../utilities/users-service'
 import './NavBar.css'
 import {
-	MDBContainer,
-	MDBCollapse,
-	MDBNavbar,
-	MDBNavbarToggler,
 	MDBIcon,
-	MDBBtn,
-  } from 'mdb-react-ui-kit'
+  } from 'mdb-ui-kit'
 
 export default function NavBar({ user, setUser }) {
 
@@ -23,10 +18,14 @@ export default function NavBar({ user, setUser }) {
 
 	return (
 		<>
-			<nav className="navbar bg-dark fluid py-2 d-flex">
-				<div className="nav-link " id="logo-name">ribbit</div>
+			<nav className="navbar bg-dark fluid py-1 d-flex">
+				<div>
+					<div className="nav-link " id="logo-name">ribbit</div>
+					<i className="fas fa-frog"></i>
+				</div>
+				<span className="greeting text-white">Welcome, {user.name}</span>
 				<div className="menu-container justify-content-end">
-				<div className="navbar-menu">
+					<div className="navbar-menu">
 						<button
 							type="button"
 							class="btn btn-secondary dropdown-toggle"
@@ -40,12 +39,43 @@ export default function NavBar({ user, setUser }) {
 						</button>
 					</div>
 				</div>
-				<Link className="nav-link text-white" to='/mythreads'>My Threads</Link>
-				<Link className="nav-link text-white" to='/global'>Global Page</Link>
-				<Link className="nav-link text-white" to="" onClick={handleLogOut}>Log Out</Link>
 			</nav>
+			{navMenu ? (
+				<div
+					className="menuLink collaspe navbar-collaspe"
+					id="bs-example-navbar-collaspe-1"
+				>
+					<ul className="nav navbar-nav">
+						<li>
+							<a>
+								<Link className="nav-link text-black" to="/global">
+									Global
+								</Link>
+							</a>
+						</li>
+						<li>
+							<a>
+								<Link
+									className="nav-link text-black"
+									to='/mythreads'
+								>My Threads</Link>
+							</a>
+						</li>
+						<li>
+							<a>
+								<Link
+									className="nav-link text-black"
+									to=""
+									onClick={handleLogOut}
+								>Log Out</Link>
+							</a>
+						</li>
+					</ul>
+				</div>
+			) : (
+				<></>
+			)}
 			<>
-				<span className="mt-3">Welcome, {user.name}</span>
 			</>
 		</>
 	)

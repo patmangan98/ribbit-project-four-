@@ -1,6 +1,18 @@
 #logo-name {
     font-family: 'Righteous', cursive;
     color: #98ae99;
-    font-size: 30px
+    font-size: 35px;
+    margin-left: 30px;
 }
 
+.greeting {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav-link {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu-container {
+    margin-right: 30px;
+}
