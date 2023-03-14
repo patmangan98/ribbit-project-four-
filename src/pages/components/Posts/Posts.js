@@ -1,19 +1,38 @@
-// import CreateAComment from "../Comment/Comment"
 import { useState } from "react"
-
+import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
-export default function Posts({post, thread, user}) {
 
-    // console.log(post)
-    // console.log(post.comments)
+import CreateAComment from "../CreateForms/CreateComment"
+// import delete
+export default function Posts({post, thread, user, setThreadArr}) {
+
+
     const [showComments, setShowComments] = useState(false)
 
+    const [deleteAPost] = useState({
+        threadId: `${thread._id}`,
+        postId: `${post._id}`
+    })
+console.log(deleteAPost)
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
 
+    function handleDeletePost(event){
+        event.preventDefault()
+        try{
+            deletePost(thread._id, post._id)
+                .then((res) => res.json())
+                .then((resData) => 
+                setThreadArr(resData.posts))
+        }catch(error){
+            console.error(error)
+        }
+    }
+
+
+
     const [commentArr, setCommentArr] = useState(post.comments)
-    // console.log(commentArr)
 
     const commentMap = commentArr.map((comments, index) => (
         <Comment 
@@ -21,12 +40,12 @@ export default function Posts({post, thread, user}) {
         key={index} 
         user={user} 
         thread={thread}
-
+        setThreadArr ={setThreadArr}
         setCommentArr={setCommentArr}
+        post={post}
     />
     ))
 
-        console.log(commentArr)
     return (
         <>
             <div className="container border rounded-4 shadow-sm my-4">
@@ -38,7 +57,22 @@ export default function Posts({post, thread, user}) {
                     onClick={toggleCommentVisiblity}
                     >Show Comments
                 </button>
+                <button
+                    className="btn btn-success mb-3"
+                    onClick={handleDeletePost}
+                    data-id={deleteAPost.threadId}
+                    >Delete Post
+                </button>
+
+                <CreateAComment 
+                post={post} 
+                user={user}
+                thread={thread}
+                setCommentArr={setCommentArr}
+                />
+             
             </div>
+            
             {showComments && commentMap}
 
         </>
