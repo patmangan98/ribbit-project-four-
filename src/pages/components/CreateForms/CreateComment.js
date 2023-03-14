@@ -29,20 +29,22 @@ export default function CreateAComment({ post, user, thread }) {
     }
 
     return (
-        <>
+        <div className="container-sm">
             <form>
-                <input
+                <textarea
+                    className="form-control rounded-2"
                     name="text"
-                    placeholder="Write comment here"
+                    placeholder="Write comment"
                     value={comment.text}
                     onChange={handleChange}
-                ></input>
+                ></textarea>
                 <button
+                    className="btn btn-success mt-2"
                     type="submit"
                     data-id={comment.postId}
                     onClick={handleSubmit}
                 >Create Comment</button>
             </form>
-        </>
+        </div>
     )
 }

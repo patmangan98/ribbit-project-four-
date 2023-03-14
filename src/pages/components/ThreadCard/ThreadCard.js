@@ -22,7 +22,7 @@ export default function ThreadCard ({thread, setThreadArr}) {
     return ( 
         <div className="container border rounded-4 shadow-sm my-3">
     
-        <h3 className="my-2">{thread.topic}</h3>
+        <h4 className="my-2">{thread.topic}</h4>
 
         <button className="btn btn-danger" onClick={handleDeleteClick}>Delete</button>
         
