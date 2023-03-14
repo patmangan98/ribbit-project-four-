@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { indexThread } from "../../utilities/thread-api"
 import ThreadCard from '../components/ThreadCard/ThreadCard'
 import CreateThread from '../components/CreateForms/CreateThread'
+import './GlobalPage.css'
 
 export default function GlobalPage({ user }) {
 	const [threadArr, setThreadArr] = useState([])
@@ -24,12 +25,11 @@ export default function GlobalPage({ user }) {
 
 		return (
 			<>
-				<h1 className="mt-3">ribbit</h1>
+				<h1 className="mt-4">ribbit 🐸</h1>
 				<Link to='/auth'>
-					<button className='btn btn-success'>Sign In</button>
+					<button className='btn btn-success mt-2 mx-2'>Sign In</button>
 				</Link>
-				<h2>Welcome</h2>
-				<button className="btn btn-success mb-3" onClick={handleToggle}>Show Global</button>
+				<button className="btn btn-success mt-2" onClick={handleToggle}>Show Global</button>
 				{visible && threadMap}
 			</>
 		)
