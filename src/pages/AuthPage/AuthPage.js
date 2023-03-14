@@ -12,6 +12,7 @@ export default function AuthPage({ setUser }) {
 	return (
 		<>
 			<h1 className="mt-3">ribbit</h1>
+			<div>
 			<Tabs
 			id='login-tabs'
 			activeKey={key}
@@ -25,6 +26,7 @@ export default function AuthPage({ setUser }) {
 			<LoginForm setUser={setUser}/>
 			</Tab>
 			</Tabs>
+			</div>
 		</>
 	)
 }

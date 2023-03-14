@@ -8,12 +8,6 @@ export default function Posts({post, thread, user}) {
     // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
 
-
-
-
-
-
-
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
@@ -35,7 +29,7 @@ export default function Posts({post, thread, user}) {
         console.log(commentArr)
     return (
         <>
-            <div className="container  border rounded-4 shadow-sm my-4">
+            <div className="container border rounded-4 shadow-sm my-4">
                 <h3 className="mt-2">{post.category}</h3>
                 <p>{post.title}</p>
                 <p>{post.text}</p>

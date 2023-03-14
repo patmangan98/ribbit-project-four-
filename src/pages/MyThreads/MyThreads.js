@@ -33,7 +33,7 @@ export default function MyThreads({user}) {
 
     return (
         <>
-            <h2>Create Thread</h2>
+            <h2>My Threads</h2>
             {threadMap}
             {/* <button onClick={handleCheckToken}>Check When My Login Expires</button> */}
         </>
