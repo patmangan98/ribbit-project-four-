@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link, redirect } from 'react-router-dom'
 import { logIn } from '../../../utilities/users-service'
 import './LoginForm.css'
 
@@ -21,6 +22,7 @@ export default function LoginForm({ setUser }) {
             e.preventDefault()
             const userToLogIn = await logIn(credentials)
             setUser(userToLogIn)
+            redirect('/global')
         } catch {
             setError('Error Logging In')
         }
@@ -59,9 +61,11 @@ export default function LoginForm({ setUser }) {
                                 <label className='form-label'>Password</label>
                             </div>
                         </div>
+                        
                         <button 
                         className="btn btn-success mx-3 my-2"
-                        type='submit'>Log In</button>
+                        type='submit'>Log In</button> 
+                       
                     </form>
                     <p className='error-message' >{error}</p>
                 </div>
