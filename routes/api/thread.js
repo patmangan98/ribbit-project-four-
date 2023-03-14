@@ -6,7 +6,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 router.post('/new', threadCtrl.createThread)
 
-router.patch("/:id", threadCtrl.updateThread)
+router.patch('/:id', threadCtrl.updateThread)
 
 router.delete('/:id', threadCtrl.deleteThread)
 
