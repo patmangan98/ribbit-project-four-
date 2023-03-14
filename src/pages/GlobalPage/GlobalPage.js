@@ -37,8 +37,10 @@ export default function GlobalPage({ user }) {
 
 	return (
 		<>
-			<h2 className='my-3'>Discover New Ideas!</h2>
-			<CreateThread user={user} setThreadArr={setThreadArr} />
+
+		<h2 className='my-2'>Discover New Ideas!</h2>
+		<CreateThread user={user} setThreadArr ={setThreadArr}/>
+
 
 			{threadMap}
 		</>

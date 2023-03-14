@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { deleteThread, indexThread } from "../../../utilities/thread-api"
+import './ThreadCard.css'
 
 
 export default function ThreadCard ({thread, setThreadArr}) {
