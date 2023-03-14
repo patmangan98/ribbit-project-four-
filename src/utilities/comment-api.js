@@ -3,7 +3,7 @@ import { getToken } from './users-service'
 export function createComment(data){
     const token = getToken()
     console.log(data)
-return fetch ('/api/comment/new', {
+return fetch ('http://localhost:3001/api/comment/new', {
     method: 'POST',
     headers:{
         Accept: 'application/json',

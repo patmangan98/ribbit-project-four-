@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
+import CreateAComment from "../CreateForms/CreateComment"
 
-export default function Posts({post, thread, user, setThreadArr}) {
+export default function Posts({post, thread, user, setThreadArr, comment}) {
 
 
     console.log(thread)
@@ -68,7 +69,11 @@ console.log(deleteAPost)
                     data-id={deleteAPost.threadId}
                     >Delete Post
                 </button>
+                <CreateAComment user={user} comment={comment} post={post} thread={thread}/>
             </div>
+
+          
+
             {showComments && commentMap}
 
         </>

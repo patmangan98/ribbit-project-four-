@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { createComment } from "../../../utilities/comment-api";
 
-export default function CreateAComment({ user, setCommentArr, comments }){
-    console.log(comments)
-    const [comment, setComment] = useState({
+export default function CreateAComment({ user, setCommentArr, comment, post, thread }){
+    console.log(post)
+
+    const [comments, setComments] = useState({
         text: "",
-        owner: `${user._id}`
+        threadId: `${thread._id}`,
+        postId : `${post._id}`
+
     })
 
 
     function handleChange(event){
-        setComment({
+        setComments({
             ...comment,
             [event.target.name]: event.target.value,
         })
@@ -20,10 +23,10 @@ export default function CreateAComment({ user, setCommentArr, comments }){
         event.preventDefault()
 
         try{
-            const formData = {...comment}
+            const formData = {...comments}
             await createComment(formData)
-            .then((res) => res.json())
-            .then((resData) => setCommentArr(resData.comments))
+            // .then((res) => res.json())
+            // .then((resData) => setCommentArr(resData.comments))
         }catch(error){
             console.error(error)
         }
@@ -42,6 +45,7 @@ export default function CreateAComment({ user, setCommentArr, comments }){
             ></input>
             <button
             type="submit"
+            data-id = {comments.postId}
             onClick={handleSubmit}
             >Create Comment</button>
         </form>

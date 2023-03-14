@@ -14,8 +14,8 @@ console.log("adding this for commit")
     // (<Comment post={post} key={index} setThreadComments={setThreadComments}/>)
 
     // )
-    const postMap = threadPosts.map((post, index, comment, i) =>
-    (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr}/>))
+    const postMap = threadPosts.map((post, index, comment) =>
+    (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr} comment={comment}/>))
 
 
     return (
