@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createPost } from "../../../utilities/post-api";
 import { indexThread } from "../../../utilities/thread-api";
 
 export default function CreateAPost({ user, setThreadPosts, thread }) {
-    // console.log(thread.posts)
     const [post, setPost] = useState({
         title: "",
         text: "",
@@ -34,6 +33,7 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
         } catch (error) {
             console.log(error)
         }
+        window.location.reload();
     }
 
     return (

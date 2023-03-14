@@ -12,7 +12,8 @@ export default function UpdateThread({thread}) {
         setUpdateThreadTopic({
             ...thread,
             [event.target.name]: event.target.value,
-        })
+    })
+        
     }
 
     async function handleSubmit(event) {
@@ -20,7 +21,7 @@ export default function UpdateThread({thread}) {
         try {
             const formData = { ...updateThreadTopic}
             await updateThread(formData, thread._id)
-        
+            window.location.reload();
         } catch (error) {
             console.log(error)
         }
