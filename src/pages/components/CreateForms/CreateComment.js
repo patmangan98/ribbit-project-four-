@@ -32,19 +32,19 @@ export default function CreateAComment({ post, user, setCommentArr, comments, th
 
     return (
         <>
-            <form>
-                <label>Text</label>
-                <input
-                    name="text"
-                    value={comment.text}
-                    onChange={handleChange}
-                ></input>
-                <button
-                    type="submit"
-                    onClick={handleSubmit}
-                    data-id={comment.postId}
-                >Create Comment</button>
-            </form>
+        <form>
+            <label>Text</label>
+            <input
+            name="text"
+            value={comment.text}
+            onChange={handleChange}
+            ></input>
+            <button
+            type="submit"
+            data-id = {comments.postId}
+            onClick={handleSubmit}
+            >Create Comment</button>
+        </form>
         </>
     )
 
