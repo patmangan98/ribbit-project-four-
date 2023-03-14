@@ -1,17 +1,17 @@
-
 const Thread = require('../../models/thread')
 
-function createThread(req, res, next){
+function createThread(req, res, next) {
     const thread = req.body
     thread.owner = req.user._id
+
     Thread.create(thread)
-    .then((thread) => {
-        res.status(201).json({ thread: thread })
-    })
-     .catch(next)
+        .then((thread) => {
+            res.status(201).json({ thread: thread })
+        })
+        .catch(next)
 }
 
-function indexThread (req, res, next){
+function indexThread(req, res, next) {
     Thread.find({})
         .populate('owner')
         .then((threads) => {
@@ -24,43 +24,43 @@ function indexThread (req, res, next){
 }
 
 
-function showThread(req, res, next){
+function showThread(req, res, next) {
     Thread.findById(req.params.id)
-    .then((thread) =>{
-        if (thread.owner.equals(req.user._id)) {
-            return thread.save()
-        } else {
-            res.sendStatus(401);
-        }
-    })
-    
-    .catch(next)
+        .then((thread) => {
+            if (thread.owner.equals(req.user._id)) {
+                return thread.save()
+            } else {
+                res.sendStatus(401);
+            }
+        })
+
+        .catch(next)
 }
 
 function updateThread(req, res, next) {
     Thread.findById(req.params.id)
-    .then((thread) => {
-        if (thread.owner.equals(req.user._id)) {
-            return thread.updateOne(req.body);
-        } else {
-            res.sendStatus(401);
-        }
-    })
-    .then((thread) => res.status(204).json(thread))
-    .catch(next)
+        .then((thread) => {
+            if (thread.owner.equals(req.user._id)) {
+                return thread.updateOne(req.body);
+            } else {
+                res.sendStatus(401);
+            }
+        })
+        .then((thread) => res.status(204).json(thread))
+        .catch(next)
 }
 
-function deleteThread(req, res, next){
+function deleteThread(req, res, next) {
     Thread.findById(req.params.id)
-    .then((thread) => {
-        if (thread.owner.equals(req.user._id)) {
-            return thread.deleteOne();
-        } else {
-            res.sendStatus(401);
-        }
-    })
-    .then(() => res.Status(204))
-    .catch(next)
+        .then((thread) => {
+            if (thread.owner.equals(req.user._id)) {
+                return thread.deleteOne();
+            } else {
+                res.sendStatus(401);
+            }
+        })
+        .then(() => res.Status(204))
+        .catch(next)
 }
 
 

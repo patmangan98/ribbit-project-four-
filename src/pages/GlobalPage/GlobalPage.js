@@ -38,7 +38,7 @@ export default function GlobalPage({ user }) {
 			<>
 				<div onClick={handleClick}><h1 className="mt-4">ribbit 🐸</h1></div>
 				<Link to='/auth'>
-					<button className='btn btn-success mt-2 mx-2'>Sign In</button>
+					<button className='btn btn-success mt-2 mx-2'>Hop-In</button>
 				</Link>
 				<button className="btn btn-success mt-2" onClick={handleToggle}>Show Global</button>
 				{visible && threadMap}
@@ -48,6 +48,7 @@ export default function GlobalPage({ user }) {
 
 	return (
 		<>
+
 
 			<h2 className='my-2'>Discover New Ideas!</h2>
 			<CreateThread user={user} setThreadArr={setThreadArr} />

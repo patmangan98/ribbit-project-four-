@@ -22,7 +22,8 @@ export default function NavBar({ user, setUser }) {
 		<>
 			<nav className="navbar bg-dark fluid py-1 d-flex">
 				<div>
-					<div className="nav-link " id="logo-name" onClick={handleClick}>ribbit</div>
+
+					<div className="nav-link " id="logo-name" onClick={handleClick}>ribbit 🐸</div>
 					<i className="fas fa-frog"></i>
 				</div>
 				<span className="greeting text-white">Welcome, {user.name}</span>
@@ -44,21 +45,21 @@ export default function NavBar({ user, setUser }) {
 			</nav>
 			{navMenu ? (
 				<div
-					className="menuLink collaspe navbar-collaspe"
+					className="menuLink collaspe navbar-collaspe bg-dark"
 					id="bs-example-navbar-collaspe-1"
 				>
 					<ul className="nav navbar-nav">
 						<li>
 							<a>
-								<Link className="nav-link text-black" to="/global">
-									Global
+								<Link className="nav-link text-white" to="/global">
+									Discover
 								</Link>
 							</a>
 						</li>
 						<li>
 							<a>
 								<Link
-									className="nav-link text-black"
+									className="nav-link text-white"
 									to='/mythreads'
 								>My Threads</Link>
 							</a>
@@ -66,10 +67,11 @@ export default function NavBar({ user, setUser }) {
 						<li>
 							<a>
 								<Link
-									className="nav-link text-black"
+									className="nav-link text-white"
 									to=""
 									onClick={handleLogOut}
-								>Log Out</Link>
+								>Hop-Out
+								<i class="bi bi-box-arrow-in-right"></i></Link>
 							</a>
 						</li>
 					</ul>

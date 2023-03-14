@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const usersCtrl = require('../../controllers/api/users')
 const postsCtrl = require('../../controllers/api/post')
 const ensureLoggedIn = require('../../config/ensureLoggedIn')

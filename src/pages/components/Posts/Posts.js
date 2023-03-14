@@ -3,17 +3,13 @@ import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
 import CreateAComment from "../CreateForms/CreateComment"
 
-
+import './Posts.css'
 export default function Posts({post, thread, user, setThreadArr}) {
-
 
     const [isPostOwned, setIsPostOwned] = useState(
         post.owner === user._id ? true : false
     )
-        console.log(isPostOwned)
-        console.log(post.owner)
-        console.log(user._id)
-
+        
     const [showComments, setShowComments] = useState(false)
 
     const [deleteAPost] = useState({
@@ -25,14 +21,14 @@ export default function Posts({post, thread, user, setThreadArr}) {
         setShowComments(!showComments)
     }
 
-    function handleDeletePost(event){
+    function handleDeletePost(event) {
         event.preventDefault()
-        try{
+        try {
             deletePost(thread._id, post._id)
                 .then((res) => res.json())
-                .then((resData) => 
-                setThreadArr(resData.posts))
-        }catch(error){
+                .then((resData) =>
+                    setThreadArr(resData.posts))
+        } catch (error) {
             console.error(error)
         }
         window.location.reload();
@@ -41,15 +37,15 @@ export default function Posts({post, thread, user, setThreadArr}) {
     const [commentArr, setCommentArr] = useState(post.comments)
 
     const commentMap = commentArr.map((comments, index) => (
-        <Comment 
-        comments={comments} 
-        key={index} 
-        user={user} 
-        thread={thread}
-        setThreadArr ={setThreadArr}
-        setCommentArr={setCommentArr}
-        post={post}
-    />
+        <Comment
+            comments={comments}
+            key={index}
+            user={user}
+            thread={thread}
+            setThreadArr={setThreadArr}
+            setCommentArr={setCommentArr}
+            post={post}
+        />
     ))
 
     if (isPostOwned === true) {
@@ -58,6 +54,7 @@ export default function Posts({post, thread, user, setThreadArr}) {
             <>
             <div className="container border rounded-4 shadow-sm my-4">
                 <h3 className="mt-2">{post.category}</h3>
+                <hr></hr>
                 <p>{post.title}</p>
                 <p>{post.text}</p>
                 <button
@@ -66,12 +63,13 @@ export default function Posts({post, thread, user, setThreadArr}) {
                     >Show Comments
                 </button>
                 <button
-                    className="btn btn-success mb-3"
+                    className="btn btn-danger mb-3 mx-2"
                     onClick={handleDeletePost}
                     data-id={deleteAPost.threadId}
                     >Delete Post
                 </button>
 
+            </div>
                 <CreateAComment 
                 post={post} 
                 user={user}
@@ -79,7 +77,6 @@ export default function Posts({post, thread, user, setThreadArr}) {
                 setCommentArr={setCommentArr}
                 />
                 {showComments && commentMap}
-            </div>
             </>
         )
     } else {
@@ -89,6 +86,7 @@ export default function Posts({post, thread, user, setThreadArr}) {
         <>
             <div className="container border rounded-4 shadow-sm my-4">
                 <h3 className="mt-2">{post.category}</h3>
+                <hr></hr>
                 <p>{post.title}</p>
                 <p>{post.text}</p>
                 <button
@@ -97,6 +95,7 @@ export default function Posts({post, thread, user, setThreadArr}) {
                     >Show Comments
                 </button>
              
+            </div>
                 <CreateAComment 
                 post={post} 
                 user={user}
@@ -104,12 +103,10 @@ export default function Posts({post, thread, user, setThreadArr}) {
                 setCommentArr={setCommentArr}
                 />
                 {showComments && commentMap}
-            </div>
             </>
           )
-           
+
 
     }
 
-    
 }

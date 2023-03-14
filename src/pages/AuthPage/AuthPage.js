@@ -11,20 +11,21 @@ export default function AuthPage({ setUser }) {
 
 	return (
 		<>
+
 			<div className="container-sm w-25 mt-5" id='tabs'>
-				<Tabs
-					id='login-tabs'
-					activeKey={key}
-					onSelect={(key) => setKey(key)}
-					className='mb-3'
-				>
-					<Tab eventKey='sign-up' title='Sign-Up'>
-						<SignUpForm setUser={setUser} />
-					</Tab>
-					<Tab eventKey='login' title='Login'>
-						<LoginForm setUser={setUser} />
-					</Tab>
-				</Tabs>
+			<Tabs
+			id='login-tabs'
+			activeKey={key}
+			onSelect={(key) => setKey(key)}
+			className='mb-3'
+			>
+			<Tab eventKey='sign-up' title='Sign-Up'>
+            <SignUpForm setUser={setUser}/>
+			</Tab>
+			<Tab eventKey='login' title='Hop-in'>
+			<LoginForm setUser={setUser}/>
+			</Tab>
+			</Tabs>
 			</div>
 		</>
 	)
