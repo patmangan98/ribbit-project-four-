@@ -1,4 +1,13 @@
 .btn-success {
-  background-color: #98ae99 ;
-  border-color: #98ae99;
+  background-color: #779d79 ;
+  border-color: #779d79;
+}
+
+.btn-danger {
+  background-color: rgb(218, 127, 127);
+  border-color:rgb(218, 127, 127)
+}
+
+.bc {
+  background-color: #EEE7CD
 }

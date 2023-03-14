@@ -1,0 +1,28 @@
+#logo-name {
+    font-family: 'Righteous', cursive;
+    color: #779d79;
+    font-size: 35px;
+    margin-left: 30px;
+}
+
+.greeting {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-right: 100px;
+}
+
+.nav-link {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu-container {
+    margin-right: 30px;
+    border-radius: 10px;
+}
+
+#collapse {
+    background-color: transparent;
+    font-size: 20px;
+    border-radius: 5px;
+    color: #779d79;
+    border-color: #779d79;
+}

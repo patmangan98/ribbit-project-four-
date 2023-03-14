@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { createComment } from "../../../utilities/comment-api";
 
-// import CreateAComment
-export default function CreateAComment({ post, user, setCommentArr, comments, thread }) {
+export default function CreateAComment({ post, user, thread }) {
     const [comment, setComment] = useState({
         text: "",
         owner: `${user._id}`,
@@ -26,31 +25,26 @@ export default function CreateAComment({ post, user, setCommentArr, comments, th
         } catch (error) {
             console.error(error)
         }
+        window.location.reload();
     }
 
-
-
     return (
-        <>
+        <div className="container-sm">
             <form>
-                <label>Text</label>
-                <input
+                <textarea
+                    className="form-control rounded-2"
                     name="text"
+                    placeholder="Write comment"
                     value={comment.text}
                     onChange={handleChange}
-                ></input>
+                ></textarea>
                 <button
+                    className="btn btn-success mt-2"
                     type="submit"
-                    onClick={handleSubmit}
                     data-id={comment.postId}
+                    onClick={handleSubmit}
                 >Create Comment</button>
             </form>
-        </>
+        </div>
     )
-
-
-
-
-
-
 }
