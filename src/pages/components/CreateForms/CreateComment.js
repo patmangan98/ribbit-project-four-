@@ -41,7 +41,7 @@ export default function CreateAComment({ post, user, setCommentArr, comments, th
             ></input>
             <button
             type="submit"
-            data-id = {comments.postId}
+            data-id = {comment.postId}
             onClick={handleSubmit}
             >Create Comment</button>
         </form>
