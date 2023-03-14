@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
-
 import CreateAComment from "../CreateForms/CreateComment"
-// import delete
+
+
 export default function Posts({post, thread, user, setThreadArr}) {
+
 
     const [isPostOwned, setIsPostOwned] = useState(
         post.owner === user._id ? true : false
@@ -12,13 +13,14 @@ export default function Posts({post, thread, user, setThreadArr}) {
         console.log(isPostOwned)
         console.log(post.owner)
         console.log(user._id)
+
     const [showComments, setShowComments] = useState(false)
 
     const [deleteAPost] = useState({
         threadId: `${thread._id}`,
         postId: `${post._id}`
     })
-console.log(deleteAPost)
+
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
@@ -33,9 +35,8 @@ console.log(deleteAPost)
         }catch(error){
             console.error(error)
         }
+        window.location.reload();
     }
-
-
 
     const [commentArr, setCommentArr] = useState(post.comments)
 
