@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
+
 import CreateAComment from "../CreateForms/CreateComment"
 // import delete
 export default function Posts({post, thread, user, setThreadArr}) {
@@ -47,7 +48,7 @@ console.log(deleteAPost)
 
     return (
         <>
-            <div className="container  border rounded-4 shadow-sm my-4">
+            <div className="container border rounded-4 shadow-sm my-4">
                 <h3 className="mt-2">{post.category}</h3>
                 <p>{post.title}</p>
                 <p>{post.text}</p>

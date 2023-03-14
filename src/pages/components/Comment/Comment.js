@@ -26,7 +26,7 @@ export default function Comment({ comments, thread, post, user, setCommentArr })
     return (
         <>
             <div className="container border rounded-4 my-2 shadow-sm">
-                <p>{comments.text}</p>
+                <p className="mt-2">{comments.text}</p>
 
                 <button
                     className="btn btn-danger mb-2"

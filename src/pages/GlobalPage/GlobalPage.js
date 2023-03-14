@@ -23,6 +23,7 @@ export default function GlobalPage({user}) {
 
 		return (
 		<>	
+			<h1 className="mt-3">ribbit</h1>
 			<Link to = '/auth'>
 				<button className='btn btn-success'>Sign In</button>
 			</Link>

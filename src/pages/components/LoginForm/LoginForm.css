@@ -1,11 +1,4 @@
-/* .login-form {
-    padding-right: 200px;
-    padding-left: 200px;
-    max-width: 700px;
-} */
-
-/* .login-form {
+.login-form {
     display: flex;
     flex-direction: column;
-} */
-
+}

@@ -30,7 +30,7 @@ export default function MyThreads({ user, threadId }) {
 
     return (
         <>
-            <h2>Create Thread</h2>
+            <h2>My Threads</h2>
             {threadMap}
 
         </>

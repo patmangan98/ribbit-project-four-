@@ -59,7 +59,9 @@ export default function LoginForm({ setUser }) {
                                 <label className='form-label'>Password</label>
                             </div>
                         </div>
-                        <button type='submit'>Log In</button>
+                        <button 
+                        className="btn btn-success mx-3 my-2"
+                        type='submit'>Log In</button>
                     </form>
                     <p className='error-message' >{error}</p>
                 </div>
