@@ -1,5 +1,4 @@
-// import CreateAComment from "../Comment/Comment"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
 
@@ -7,21 +6,15 @@ export default function Posts({post, thread, user, setThreadArr}) {
 
 
     console.log(thread)
-    // console.log(post.comments)
     const [showComments, setShowComments] = useState(false)
 
-    const [deleteAPost, setDeletePost] = useState({
+    const [deleteAPost] = useState({
         threadId: `${thread._id}`
     })
 console.log(deleteAPost)
     function toggleCommentVisiblity() {
         setShowComments(!showComments)
     }
-    // useEffect(() => {
-	// 	showPost(post._id)
-	// 		.then((res) => res.json())
-	// 		.then((resData) => setDeletePost(resData.posts));
-	// }, [])
 
     function handleDelete(event){
         event.preventDefault()
@@ -37,7 +30,6 @@ console.log(deleteAPost)
 
 
     const [commentArr, setCommentArr] = useState(post.comments)
-    // console.log(commentArr)
 
     const commentMap = commentArr.map((comments, index) => (
         <Comment 
@@ -50,7 +42,6 @@ console.log(deleteAPost)
     />
     ))
 
-        // console.log(commentArr)
     return (
         <>
             <div className="container  border rounded-4 shadow-sm my-4">
