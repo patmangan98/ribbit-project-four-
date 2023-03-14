@@ -3,7 +3,16 @@ import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
 import CreateAComment from "../CreateForms/CreateComment"
 
+
 export default function Posts({post, thread, user, setThreadArr}) {
+
+
+    const [isPostOwned, setIsPostOwned] = useState(
+        post.owner === user._id ? true : false
+    )
+        console.log(isPostOwned)
+        console.log(post.owner)
+        console.log(user._id)
 
     const [showComments, setShowComments] = useState(false)
 
@@ -43,8 +52,10 @@ export default function Posts({post, thread, user, setThreadArr}) {
     />
     ))
 
-    return (
-        <>
+    if (isPostOwned === true) {
+        return (
+                  
+            <>
             <div className="container border rounded-4 shadow-sm my-4">
                 <h3 className="mt-2">{post.category}</h3>
                 <p>{post.title}</p>
@@ -67,11 +78,38 @@ export default function Posts({post, thread, user, setThreadArr}) {
                 thread={thread}
                 setCommentArr={setCommentArr}
                 />
-             
+                {showComments && commentMap}
             </div>
-            
-            {showComments && commentMap}
+            </>
+        )
+    } else {
+       
+          return (
 
-        </>
-    )
+        <>
+            <div className="container border rounded-4 shadow-sm my-4">
+                <h3 className="mt-2">{post.category}</h3>
+                <p>{post.title}</p>
+                <p>{post.text}</p>
+                <button
+                    className="btn btn-success mb-3"
+                    onClick={toggleCommentVisiblity}
+                    >Show Comments
+                </button>
+             
+                <CreateAComment 
+                post={post} 
+                user={user}
+                thread={thread}
+                setCommentArr={setCommentArr}
+                />
+                {showComments && commentMap}
+            </div>
+            </>
+          )
+           
+
+    }
+
+    
 }

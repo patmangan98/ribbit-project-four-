@@ -31,12 +31,14 @@ export default function App() {
 					<Routes>
 						<Route path='/global' element={<GlobalPage user={user}/>} />
 						<Route path='/mythreads' element={<MyThreads user={user} />} />
+						<Route path='/auth' element={<GlobalPage user={user}/>} />
 						{threadRoutes}
 					</Routes>
 				</>
 			) : (
 				<>
 				<Routes>
+					<Route path='/global' element={<GlobalPage user={user}/>} />
 					<Route path='/auth' element={<AuthPage setUser={setUser}/>} />
 				</Routes>
 				<GlobalPage />
