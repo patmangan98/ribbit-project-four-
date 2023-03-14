@@ -36,11 +36,11 @@ export default function App() {
 				</>
 			) : (
 				<>
+				<GlobalPage />
 				<Routes>
 					<Route path='/global' element={<GlobalPage user={user}/>} />
 					<Route path='/auth' element={<AuthPage setUser={setUser}/>} />
 				</Routes>
-				<GlobalPage />
 				</>
 			)}
 		</main>
