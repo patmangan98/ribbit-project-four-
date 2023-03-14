@@ -10,6 +10,7 @@ function createComment(req, res, next) {
     const threadId = req.body.threadId
     Thread.findOne({ _id: threadId })
         .then((thread) => {
+            console.log(thread)
             const postIndex = thread.posts.findIndex((posts) => posts)
             const post = thread.posts[postIndex]
             post.comments.push(comment)
@@ -42,7 +43,7 @@ function deleteComment(req, res, next) {
             })
             const post = thread.posts[postIndex]
             post.comments.id(commentId).remove()
-            console.log(post.comments) 
+            console.log(post.comments)
             return thread.save()
         })
         .then(() => {
@@ -52,8 +53,21 @@ function deleteComment(req, res, next) {
 }
 
 
+function indexComment(req, res, next) {
+    const postId = req.params.postId
+    console.log(req.params)
+    Post.findById(postId)
+        .then((post) => {
 
+            return post.comments.map((comments) => comments)
+        })
+        .then((comments) => {
+            res.sendStatus(200).json({comments: comments})
+        })
+        .catch(next)
+}
 module.exports = {
     createComment,
-    deleteComment
+    deleteComment,
+    indexComment
 }

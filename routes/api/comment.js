@@ -10,7 +10,7 @@ router.post('/new', commentCtrl.createComment)
 
 router.delete('/:threadId/:commentId', commentCtrl.deleteComment)
 
-
+router.get('/:postId', commentCtrl.indexComment)
 
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { deleteComment } from "../../../utilities/comment-api";
+import CreateAComment from "../CreateForms/CreateComment";
 
-export default function Comment({ comments, thread }) {
+
+export default function Comment({ comments, thread, post, user, setCommentArr }) {
     console.log(comments)
-
+    console.log(post)
     const [deleteAComment, setDeleteAComment] = useState({
-        threadId: `${thread._id}`
+        threadId: `${thread._id}`,
+        // postId:`${post._id}`
     })
 
     function handleDelete() {
@@ -30,8 +33,15 @@ export default function Comment({ comments, thread }) {
                     onClick={handleDelete}
                     data-id={deleteAComment.threadId}
                 >Delete</button>
+                
+                {/* <CreateAComment 
+                post={post} 
+                user={user}
+                thread={thread}
+                setCommentArr={setCommentArr}
+                /> */}
             </div>
-
+        
         </>
     )
 }
