@@ -14,10 +14,7 @@ async function create(req, res) {
 // just for right now I want to see if this is connected 
     try {
         const user = await User.create(req.body)
-        console.log(User)
-        console.log(req.body)
         const token = createJWT(user)
-
         res.json(token)
     } catch (error) {
         res.status(400).json(error)
@@ -44,7 +41,6 @@ async function logIn(req, res) {
 }
 
 function checkToken(req, res) {
-    console.log('req.user', req.user)
     res.json(req.exp)
 }
 
