@@ -28,6 +28,7 @@ console.log(deleteAPost)
         }catch(error){
             console.error(error)
         }
+        window.location.reload();
     }
 
 
