@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom"
 import { deleteThread, indexThread } from "../../../utilities/thread-api"
+import './ThreadCard.css'
 
 
 export default function ThreadCard ({thread, setThreadArr}) {
@@ -22,13 +23,8 @@ export default function ThreadCard ({thread, setThreadArr}) {
         
     }
 
-    // console.log(thread._id)
-    // console.log(thread)
-
     return ( 
         <div className="container border rounded-4 shadow-sm my-3">
-        
-        
     
         <h3 className="my-2">{thread.topic}</h3>
 

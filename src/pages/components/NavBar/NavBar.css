@@ -6,13 +6,23 @@
 }
 
 .greeting {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-right: 30px;
 }
 
 .nav-link {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .menu-container {
     margin-right: 30px;
+    border-radius: 10px;
+}
+
+#collapse {
+    background-color: transparent;
+    font-size: 20px;
+    border-radius: 5px;
+    color: #98ae99;
+    border-color: #98ae99;
 }

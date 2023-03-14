@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react"
 import * as userService from '../../../utilities/users-service'
 import './NavBar.css'
-import {
-	MDBIcon,
-  } from 'mdb-ui-kit'
+import { MDBIcon } from 'mdb-ui-kit'
 
 export default function NavBar({ user, setUser }) {
 
@@ -28,14 +26,14 @@ export default function NavBar({ user, setUser }) {
 					<div className="navbar-menu">
 						<button
 							type="button"
-							class="btn btn-secondary dropdown-toggle"
+							class="btn btn-secondary"
 							data-toggle="dropdown"
 							aria-haspopup="true"
 							aria-expanded="false"
 							id="collapse"
 							onClick={() => setNavMenu((prevState) => !prevState)}
 						>
-							<i className="bi bi-list"></i>
+						<i class="bi bi-three-dots"></i>
 						</button>
 					</div>
 				</div>
@@ -75,8 +73,6 @@ export default function NavBar({ user, setUser }) {
 			) : (
 				<></>
 			)}
-			<>
-			</>
 		</>
 	)
 }
