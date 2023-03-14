@@ -1,16 +1,12 @@
 const Thread = require('../../models/thread')
-const User = require('../../models/user')
-const Comment = require('../../models/comment')
 
 function createPost(req, res, next) {
-
     const post = req.body
-    console.log(post)
     post.owner = req.user._id
     const threadId = req.body.threadId
+
     Thread.findById(threadId)
         .then((thread) => {
-            console.log(thread)
             thread.posts.push(post)
             return thread.save()
         })
@@ -24,6 +20,7 @@ function createPost(req, res, next) {
 
 function showPost(req, res, next) {
     const postId = req.params.id
+
     Thread.findOne({ 'thread.posts._id': postId })
         .then((thread) => {
             const postIndex = thread.posts.findIndex(post => post._id == postId)
@@ -41,9 +38,9 @@ function showPost(req, res, next) {
 function deletePost(req, res, next) {
     const postId = req.params.postId
     const threadId = req.params.threadId
+
     Thread.findById(threadId)
         .then((thread) => {
-
             const postIndex = thread.posts.findIndex(post => post._id == postId)
             const post = thread.posts[postIndex]
             if (post.owner.equals(req.user._id)) {
@@ -51,7 +48,6 @@ function deletePost(req, res, next) {
             } else {
                 res.sendStatus(401)
             }
-
             return thread.save()
         })
         .then(() => res.sendStatus(204))
