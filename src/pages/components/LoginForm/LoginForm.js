@@ -64,7 +64,7 @@ export default function LoginForm({ setUser }) {
                         
                         <button 
                         className="btn btn-success mx-3 my-2"
-                        type='submit'>Log In</button> 
+                        type='submit'>Hop-In</button> 
                        
                     </form>
                     <p className='error-message' >{error}</p>

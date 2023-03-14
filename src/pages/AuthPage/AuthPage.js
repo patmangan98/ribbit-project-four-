@@ -21,7 +21,7 @@ export default function AuthPage({ setUser }) {
 			<Tab eventKey='sign-up' title='Sign-Up'>
             <SignUpForm setUser={setUser}/>
 			</Tab>
-			<Tab eventKey='login' title='Login'>
+			<Tab eventKey='login' title='Hop-in'>
 			<LoginForm setUser={setUser}/>
 			</Tab>
 			</Tabs>
