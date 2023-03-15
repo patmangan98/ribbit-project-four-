@@ -2,8 +2,8 @@ import { useState } from "react"
 import { deletePost } from "../../../utilities/post-api"
 import Comment from "../Comment/Comment"
 import CreateAComment from "../CreateForms/CreateComment"
-
 import './Posts.css'
+
 export default function Posts({post, thread, user, setThreadArr}) {
 
     const [isPostOwned, setIsPostOwned] = useState(
