@@ -32,9 +32,11 @@ And before you know it, you're having so much froggy fun!
 
 ## Getting Started
 
-**Hop on over:** [Ribbit]()
+**Hop on over:** [Ribbit](https://npm-install-andand-npm-run-build-mnbj.onrender.com)
 
 **The Process:** [Trello Board](https://trello.com/b/7G87qAfX/ribbit)
+
+![ERD](./Images/Ribbit%20ERD.png)
 
 ## Next Steps
 
