@@ -14,7 +14,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:3000` }))
+app.use(cors({ origin: process.env.CLIENT_ORIGIN || `https://npm-install-andand-npm-run-build-mnbj.onrender.com/` }))
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
