@@ -1,11 +1,12 @@
 import { getToken } from "./users-service"
 
-const BASE_URL = "https://ribbit-server.onrender.com"
+// const BASE_URL = "https://ribbit-server.onrender.com"
+const BASE_URL = '/api/posts'
 
 export function createPost(data){
     const token = getToken()
     console.log(data)
-return fetch (`${BASE_URL}/api/posts/new`, {
+return fetch (`/api/posts/new`, {
     method: "POST",
     headers:{
         Accept: "application/json",

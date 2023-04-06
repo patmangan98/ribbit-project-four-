@@ -1,6 +1,7 @@
 import { getToken } from './users-service'
 
-const BASE_URL = 'https://ribbit-server.onrender.com/api/users'
+// const BASE_URL = 'https://ribbit-server.onrender.com/api/users'
+const BASE_URL = '/api/users'
 
 export async function signUp(userData) {
     // // pausing code to wait for a response back from the server
