@@ -57,6 +57,7 @@ export default function Posts({post, thread, user, setThreadArr}) {
                 <hr></hr>
                 <p>{post.title}</p>
                 <p>{post.text}</p>
+                <img src={post.image}/>
                 <button
                     className="btn btn-success mb-3"
                     onClick={toggleCommentVisiblity}
