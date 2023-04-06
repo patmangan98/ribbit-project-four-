@@ -7,6 +7,7 @@ import { indexPosts } from "../../utilities/post-api"
 export default function DetailThread({thread, user, setThreadArr }) {
 
 
+
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
@@ -24,16 +25,19 @@ export default function DetailThread({thread, user, setThreadArr }) {
     const postMap = posts.map((post, index, comments) =>
         (<Posts post={post} key={index} user={user} thread={thread} comments={comments}/>))
 
+
     return (
 
         <>
             <UpdateThread thread={thread} />
             {/* <Posts/> */}
             <CreateAPost
+
             user={user} 
             setPosts={setPosts} 
             thread={thread} 
             
+
             />
             {postMap}
         </>
