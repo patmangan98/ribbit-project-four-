@@ -20,7 +20,7 @@ return fetch (`/api/posts/new`, {
 export function deletePost(threadId, postId){
     console.log(threadId, postId)
     const token = getToken()
-    return fetch (`${BASE_URL}/api/posts/${threadId}/${postId}`, {
+    return fetch (`/api/posts/${threadId}/${postId}`, {
         method: "DELETE",
         headers:{
             'Authorization': `Bearer ${token}`,
@@ -31,10 +31,20 @@ export function deletePost(threadId, postId){
 export function showPost(id){
     const token = getToken()
 
-    return fetch (`${BASE_URL}/api/posts/${id}`, {
+    return fetch (`/api/posts/${id}`, {
         method: "GET",
         headers:{
             'Authorization': `Bearer ${token}`,
         },
+    })
+}
+
+export function indexPosts(threadId){
+    const token = getToken()
+    return fetch(`/api/posts/index/${threadId}`, {
+        method : "GET",
+            headers : {
+                'Authorization': `Bearer ${token}`
+            },
     })
 }

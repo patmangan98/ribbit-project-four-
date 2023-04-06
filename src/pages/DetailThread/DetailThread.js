@@ -1,15 +1,28 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Posts from "../components/Posts/Posts"
 import CreateAPost from "../components/CreateForms/CreatePost"
 import UpdateThread from '../components/UpdateThread/UpdateThread'
+import { indexPosts } from "../../utilities/post-api"
 
-export default function DetailThread({ post, thread, user, setThreadArr }) {
+export default function DetailThread({thread, user, setThreadArr }) {
 
-    console.log("adding this for commit")
-    const [threadPosts, setThreadPosts] = useState(thread.posts)
 
-    const postMap = threadPosts.map((post, index, comment, i) =>
-        (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr} comment={comment}/>))
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        indexPosts(thread._id)
+            .then((res) => res.json())
+            .then((resData) => setPosts(resData.post))
+    }, [])
+
+    console.log(posts)
+    // const [threadPosts, setThreadPosts] = useState(posts)
+
+    // console.log(threadPosts)
+
+
+    const postMap = posts.map((post, index, comments) =>
+        (<Posts post={post} key={index} user={user} thread={thread} comments={comments}/>))
 
     return (
 
@@ -18,7 +31,7 @@ export default function DetailThread({ post, thread, user, setThreadArr }) {
             {/* <Posts/> */}
             <CreateAPost
             user={user} 
-            setThreadPosts={setThreadPosts} 
+            setPosts={setPosts} 
             thread={thread} 
             
             />
