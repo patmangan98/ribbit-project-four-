@@ -10,6 +10,8 @@ router.delete('/:threadId/:postId', postsCtrl.deletePost)
 
 router.get('/:id', postsCtrl.showPost)
 
+router.get('/index/:threadId', postsCtrl.indexPost)
+
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 
 module.exports = router

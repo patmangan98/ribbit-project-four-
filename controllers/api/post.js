@@ -1,3 +1,4 @@
+const { post } = require('../../models/comment')
 const Thread = require('../../models/thread')
 
 function createPost(req, res, next) {
@@ -55,8 +56,26 @@ function deletePost(req, res, next) {
         .catch(next)
 }
 
+function indexPost (req, res, next) {
+    const threadId = req.params.threadId
+    console.log(req.params)
+    console.log(threadId)
+    Thread.find({ 'thread._id': threadId })
+        .then((thread) => {
+            const postMap = thread.map(thread => thread.posts)
+            console.log(postMap)
+            return postMap.pop()
+        })
+        .then((post) => {
+            return res.status(200).json({ post: post })
+        })
+        .catch(next)
+
+}
+
 module.exports = {
     createPost,
     showPost,
-    deletePost
+    deletePost,
+    indexPost
 }

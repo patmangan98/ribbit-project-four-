@@ -37,6 +37,7 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
     });
   }
 
+
   const handleImage = async (event) => {
     const file = event.target.files[0];
     const base64 = await convertToBase64(file);
@@ -53,6 +54,7 @@ export default function CreateAPost({ user, setThreadPosts, thread }) {
       await axios.post("http://localhost:3000/posts/new", newImage);
     } catch (error) {
       console.error(error);
+
     }
   };
 
