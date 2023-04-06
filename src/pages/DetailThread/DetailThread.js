@@ -5,11 +5,16 @@ import UpdateThread from '../components/UpdateThread/UpdateThread'
 
 export default function DetailThread({ post, thread, user, setThreadArr }) {
 
-    console.log("adding this for commit")
     const [threadPosts, setThreadPosts] = useState(thread.posts)
 
     const postMap = threadPosts.map((post, index, comment, i) =>
-        (<Posts post={post} key={index} user={user} thread={thread} setThreadArr={setThreadArr} comment={comment}/>))
+    (<Posts
+        post={post}
+        key={index}
+        user={user}
+        thread={thread}
+        setThreadArr={setThreadArr}
+        comment={comment} />))
 
     return (
 
@@ -17,10 +22,10 @@ export default function DetailThread({ post, thread, user, setThreadArr }) {
             <UpdateThread thread={thread} />
             {/* <Posts/> */}
             <CreateAPost
-            user={user} 
-            setThreadPosts={setThreadPosts} 
-            thread={thread} 
-            
+                user={user}
+                setThreadPosts={setThreadPosts}
+                thread={thread}
+
             />
             {postMap}
         </>
