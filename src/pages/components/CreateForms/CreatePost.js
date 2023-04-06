@@ -4,8 +4,8 @@ import { indexThread } from "../../../utilities/thread-api";
 import axios from "axios";
 
 export default function CreateAPost({ user, setThreadPosts, thread }) {
-    console.log(user)
-    console.log(thread)
+    // console.log(user)
+    // console.log(thread)
   const [post, setPost] = useState({
     title: "",
     text: "",

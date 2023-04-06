@@ -57,12 +57,13 @@ function deletePost(req, res, next) {
 }
 
 function indexPost (req, res, next) {
-    const threadId = req.params.id
+    const threadId = req.params.threadId
+    // console.log(req.params.threadId)
 
-    Thread.find({ 'thread._id': threadId })
+    Thread.findOne({ 'thread._id': threadId })
         .then((thread) => {
-            const postMap = thread.map(thread => thread.posts)
-            return postMap
+            console.log(thread.posts)
+            return thread.posts
         })
         .then((post) => {
             return res.status(200).json({ post: post })

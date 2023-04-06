@@ -38,3 +38,13 @@ export function showPost(id){
         },
     })
 }
+
+export function indexPosts(threadId){
+    const token = getToken()
+    return fetch(`/api/posts/index/${threadId}`, {
+        method : "GET",
+            headers : {
+                'Authorization': `Bearer ${token}`
+            },
+    })
+}
